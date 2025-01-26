@@ -72,7 +72,7 @@ class _AlarmCardState extends TbContextState<AlarmCard> {
                                     ),
                                   ),
                                   style: TbTextStyles.bodyMedium.copyWith(
-                                    color: Colors.black.withOpacity(.54),
+                                    color: Colors.black.withValues(alpha: .54),
                                   ),
                                 ),
                               ],
@@ -88,7 +88,8 @@ class _AlarmCardState extends TbContextState<AlarmCard> {
                                         ? widget.alarm.originatorName!
                                         : '',
                                     style: TbTextStyles.bodyMedium.copyWith(
-                                      color: Colors.black.withOpacity(.54),
+                                      color:
+                                          Colors.black.withValues(alpha: .54),
                                     ),
                                   ),
                                 ),
@@ -112,7 +113,7 @@ class _AlarmCardState extends TbContextState<AlarmCard> {
                 Divider(
                   height: 24,
                   thickness: 1,
-                  color: Colors.black.withOpacity(.05),
+                  color: Colors.black.withValues(alpha: .05),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -124,14 +125,15 @@ class _AlarmCardState extends TbContextState<AlarmCard> {
                         child: Text(
                           alarmStatusTranslations[widget.alarm.status]!,
                           style: TbTextStyles.bodyMedium.copyWith(
-                            color: Colors.black.withOpacity(.76),
+                            color: Colors.black.withValues(alpha: .76),
                           ),
                         ),
                       ),
                       CircleAvatar(
                         radius: 16,
-                        backgroundColor:
-                            Theme.of(context).primaryColor.withOpacity(.06),
+                        backgroundColor: Theme.of(context)
+                            .primaryColor
+                            .withValues(alpha: .06),
                         child: IconButton(
                           icon: Icon(
                             Icons.more_vert,

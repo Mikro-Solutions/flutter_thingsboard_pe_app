@@ -114,7 +114,7 @@ class NotificationWidget extends StatelessWidget {
                               ),
                               icon: Icon(
                                 Icons.check_circle_outline,
-                                color: Colors.black.withOpacity(0.38),
+                                color: Colors.black.withValues(alpha: 0.38),
                               ),
                             ),
                           ),
@@ -133,8 +133,8 @@ class NotificationWidget extends StatelessWidget {
                       visible: severity != null,
                       child: Container(
                         decoration: BoxDecoration(
-                          color:
-                              alarmSeverityColors[severity]?.withOpacity(0.1),
+                          color: alarmSeverityColors[severity]
+                              ?.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         padding: const EdgeInsets.all(5),

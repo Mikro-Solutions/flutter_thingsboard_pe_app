@@ -380,8 +380,8 @@ class _SignUpPageState extends TbPageState<SignUpPage> {
                                 ),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color:
-                                        Colors.grey.shade200.withOpacity(0.2),
+                                    color: Colors.grey.shade200
+                                        .withValues(alpha: 0.2),
                                   ),
                                   child: Container(
                                     padding: EdgeInsets.only(

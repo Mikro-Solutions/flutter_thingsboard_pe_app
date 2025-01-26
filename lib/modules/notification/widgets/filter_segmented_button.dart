@@ -17,7 +17,7 @@ class FilterSegmentedButton<T> extends StatelessWidget {
     fontWeight: FontWeight.w500,
   );
   final unselectedTextStyle = TextStyle(
-    color: Colors.black.withOpacity(0.38),
+    color: Colors.black.withValues(alpha: 0.38),
     fontWeight: FontWeight.w400,
   );
 
@@ -26,7 +26,7 @@ class FilterSegmentedButton<T> extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: Colors.black.withOpacity(0.06),
+        color: Colors.black.withValues(alpha: 0.06),
       ),
       height: 32,
       padding: const EdgeInsets.all(2),

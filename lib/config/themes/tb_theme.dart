@@ -43,12 +43,9 @@ const tbDarkMatIndigo = MaterialColor(
   },
 );
 
-final ThemeData theme = ThemeData(primarySwatch: tbMatIndigo);
-
 ThemeData tbTheme = ThemeData(
-  useMaterial3: false,
   primarySwatch: tbMatIndigo,
-  colorScheme: theme.colorScheme
+  colorScheme: ColorScheme.fromSeed(seedColor: tbMatIndigo[500]!)
       .copyWith(primary: tbMatIndigo, secondary: Colors.deepOrange),
   scaffoldBackgroundColor: const Color(0xFFFAFAFA),
   textTheme: tbTypography.black,
@@ -80,8 +77,12 @@ ThemeData tbTheme = ThemeData(
   ),
 );
 
-final ThemeData darkTheme =
-    ThemeData(primarySwatch: tbDarkMatIndigo, brightness: Brightness.dark);
+final ThemeData darkTheme = ThemeData(
+  colorScheme: ColorScheme.fromSeed(
+      seedColor: tbDarkMatIndigo[500]!, brightness: Brightness.dark,),
+  primarySwatch: tbDarkMatIndigo,
+  brightness: Brightness.dark,
+);
 
 ThemeData tbDarkTheme = ThemeData(
   primarySwatch: tbDarkMatIndigo,

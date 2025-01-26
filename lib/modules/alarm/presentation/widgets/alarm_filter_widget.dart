@@ -22,7 +22,7 @@ class AlarmFilterWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.black.withOpacity(0.12),
+          color: Colors.black.withValues(alpha: 0.12),
         ),
         borderRadius: BorderRadius.circular(6),
       ),
@@ -38,7 +38,7 @@ class AlarmFilterWidget extends StatelessWidget {
                 Text(
                   filterTitle,
                   style: TbTextStyles.labelLarge.copyWith(
-                    color: Colors.black.withOpacity(0.76),
+                    color: Colors.black.withValues(alpha: 0.76),
                   ),
                 ),
                 Visibility(

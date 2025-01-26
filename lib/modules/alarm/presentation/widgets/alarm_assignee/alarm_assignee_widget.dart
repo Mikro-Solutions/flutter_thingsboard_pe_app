@@ -50,7 +50,7 @@ class AlarmAssigneeWidget extends StatelessWidget {
           constraints: const BoxConstraints(minHeight: 38),
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.black.withOpacity(0.12),
+              color: Colors.black.withValues(alpha: 0.12),
             ),
             borderRadius: BorderRadius.circular(4),
           ),
@@ -63,7 +63,7 @@ class AlarmAssigneeWidget extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.account_circle,
-                        color: Colors.black.withOpacity(0.38),
+                        color: Colors.black.withValues(alpha: 0.38),
                       ),
                       const SizedBox(width: 8),
                       Text(
@@ -71,7 +71,7 @@ class AlarmAssigneeWidget extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Colors.black.withOpacity(0.38),
+                          color: Colors.black.withValues(alpha: 0.38),
                         ),
                       ),
                       const Spacer(),
@@ -79,7 +79,7 @@ class AlarmAssigneeWidget extends StatelessWidget {
                         angle: -pi / 2,
                         child: Icon(
                           Icons.arrow_left_outlined,
-                          color: Colors.black.withOpacity(.38),
+                          color: Colors.black.withValues(alpha: .38),
                         ),
                       ),
                     ],
@@ -104,7 +104,7 @@ class AlarmAssigneeWidget extends StatelessWidget {
                         angle: -pi / 2,
                         child: Icon(
                           Icons.arrow_left_outlined,
-                          color: Colors.black.withOpacity(.38),
+                          color: Colors.black.withValues(alpha: .38),
                         ),
                       ),
                     ],

@@ -46,7 +46,7 @@ class _AssigneeListWidgetState extends State<AlarmAssigneeListWidget> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color: const Color(0xffC7C7CC).withOpacity(.5),
+                color: const Color(0xffC7C7CC).withValues(alpha: .5),
               ),
               width: 36,
               height: 5,
@@ -88,14 +88,14 @@ class _AssigneeListWidgetState extends State<AlarmAssigneeListWidget> {
                   ),
                   focusColor: Colors.red,
                   hintStyle: TbTextStyles.bodyLarge.copyWith(
-                    color: Colors.black.withOpacity(.38),
+                    color: Colors.black.withValues(alpha: .38),
                   ),
                   hintText: 'Search user',
                   contentPadding: const EdgeInsets.fromLTRB(8, 12, 16, 12),
                   isDense: true,
                   prefixIcon: Icon(
                     Icons.search,
-                    color: Colors.black.withOpacity(0.54),
+                    color: Colors.black.withValues(alpha: 0.54),
                     size: 24,
                   ),
                   suffixIcon: textEditingController.text.isNotEmpty
@@ -110,7 +110,7 @@ class _AssigneeListWidgetState extends State<AlarmAssigneeListWidget> {
                           },
                           icon: Icon(
                             Icons.close_rounded,
-                            color: Colors.black.withOpacity(.54),
+                            color: Colors.black.withValues(alpha: .54),
                             size: 24,
                           ),
                         )
@@ -153,7 +153,7 @@ class _AssigneeListWidgetState extends State<AlarmAssigneeListWidget> {
                               UserInfoWidget(
                                 avatar: Icon(
                                   Icons.account_circle,
-                                  color: Colors.black.withOpacity(0.38),
+                                  color: Colors.black.withValues(alpha: 0.38),
                                   size: 32,
                                 ),
                                 name: S.of(context).unassigned,
@@ -216,14 +216,14 @@ class _AssigneeListWidgetState extends State<AlarmAssigneeListWidget> {
                         Text(
                           S.of(context).noResultsFound,
                           style: TbTextStyles.titleXs.copyWith(
-                            color: Colors.black.withOpacity(.87),
+                            color: Colors.black.withValues(alpha: .87),
                           ),
                         ),
                         const SizedBox(height: 5),
                         Text(
                           S.of(context).tryRefiningYourQuery,
                           style: TbTextStyles.bodyLarge.copyWith(
-                            color: Colors.black.withOpacity(.54),
+                            color: Colors.black.withValues(alpha: .54),
                           ),
                         ),
                       ],

@@ -8,7 +8,7 @@ abstract class TbThemeUtils {
   static const Color _tbTextColor = Color(0xFF282828);
 
   static final tbPrimary =
-      _mergeColors(Colors.teal, {'500': Colors.teal[800]!.value});
+      _mergeColors(Colors.indigo, {'500': Colors.indigo[800]!.value});
   static final tbAccent = _mergeColors(Colors.deepOrange, {});
 
   static ThemeData createTheme(PaletteSettings? paletteSettings) {
@@ -17,9 +17,9 @@ abstract class TbThemeUtils {
     var accentColor =
         _materialColorFromPalette(paletteSettings?.accentPalette, false);
     var primaryColor = primarySwatch[500]!;
-    ThemeData theme = ThemeData(primarySwatch: primarySwatch);
+    ThemeData theme =
+        ThemeData(primarySwatch: primarySwatch);
     return ThemeData(
-      useMaterial3: false,
       primarySwatch: primarySwatch,
       colorScheme: theme.colorScheme.copyWith(primary: accentColor),
       scaffoldBackgroundColor: const Color(0xFFFAFAFA),
@@ -27,14 +27,14 @@ abstract class TbThemeUtils {
       primaryTextTheme: _tbTypography.black,
       typography: _tbTypography,
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.indigo,
         foregroundColor: _tbTextColor,
         iconTheme: IconThemeData(color: _tbTextColor),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: Colors.white,
         selectedItemColor: primaryColor,
-        unselectedItemColor: Colors.black.withOpacity(.38),
+        unselectedItemColor: Colors.black.withValues(alpha: .38),
         showSelectedLabels: true,
         showUnselectedLabels: true,
       ),

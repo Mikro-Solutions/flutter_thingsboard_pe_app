@@ -27,7 +27,7 @@ class ChooseRegionScreen extends TbContextStatelessWidget {
         title: Text(
           S.of(context).chooseRegion,
           style: TbTextStyles.titleXs.copyWith(
-            color: Colors.black.withOpacity(.87),
+            color: Colors.black.withValues(alpha: .87),
           ),
         ),
       ),

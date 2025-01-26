@@ -41,7 +41,7 @@ class _AlarmDetailsWidgetState extends State<AlarmDetailsWidget>
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.black.withOpacity(.12),
+              color: Colors.black.withValues(alpha: .12),
               width: 1,
             ),
             borderRadius: BorderRadius.circular(6),
@@ -56,7 +56,7 @@ class _AlarmDetailsWidgetState extends State<AlarmDetailsWidget>
                   Text(
                     S.of(context).details,
                     style: TbTextStyles.labelLarge.copyWith(
-                      color: Colors.black.withOpacity(.76),
+                      color: Colors.black.withValues(alpha: .76),
                     ),
                   ),
                   RotationTransition(
@@ -67,7 +67,7 @@ class _AlarmDetailsWidgetState extends State<AlarmDetailsWidget>
                       angle: pi / 2,
                       child: Icon(
                         Icons.arrow_left_outlined,
-                        color: Colors.black.withOpacity(.38),
+                        color: Colors.black.withValues(alpha: .38),
                       ),
                     ),
                   ),
@@ -130,8 +130,9 @@ class _AlarmDetailsWidgetState extends State<AlarmDetailsWidget>
                           );
                         },
                         style: TextButton.styleFrom(
-                          backgroundColor:
-                              Theme.of(context).primaryColor.withOpacity(.1),
+                          backgroundColor: Theme.of(context)
+                              .primaryColor
+                              .withValues(alpha: .1),
                           padding: const EdgeInsets.symmetric(vertical: 12),
                         ),
                         child: Text(

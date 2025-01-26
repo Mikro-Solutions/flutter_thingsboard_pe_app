@@ -284,16 +284,19 @@ class WlService {
             : ThingsboardImage.thingsBoardWithTitle,
         height: height,
         colorFilter: ColorFilter.mode(themeData.primaryColor, BlendMode.srcIn),
-        semanticsLabel: 'ThingsBoard Logo',
+        semanticsLabel: 'Systemat Logo',
       );
     } else {
-      image = Utils.imageFromTbImage(
-        context,
-        tbClient,
-        wlParams.logoImageUrl!,
-        height: height,
-        semanticLabel: 'ThingsBoard Logo',
-        loginLogo: isLogin,
+      image = Padding(
+        padding: const EdgeInsets.only(bottom: 4.0),
+        child: Utils.imageFromTbImage(
+          context,
+          tbClient,
+          wlParams.logoImageUrl!,
+          height: height,
+          semanticLabel: 'Systemat Logo',
+          loginLogo: isLogin,
+        ),
       );
     }
     if (isLogin) {

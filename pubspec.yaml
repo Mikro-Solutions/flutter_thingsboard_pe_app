@@ -43,7 +43,7 @@ dependencies:
   preload_page_view: ^0.2.0
   flutter_localizations:
     sdk: flutter
-  firebase_core: ^3.1.0
+  firebase_core: ^3.10.1
   firebase_messaging: ^15.0.1
   flutter_local_notifications: ^17.1.2
   flutter_new_badger: ^1.0.1
@@ -67,7 +67,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.3
   mocktail: ^1.0.3
   bloc_test: ^9.1.7
   flutter_lints: ^2.0.0
@@ -110,6 +110,6 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/images/thingsboard.png"
+  image_path: "assets/images/systemat-logo-circle-light.png"
 flutter_intl:
   enabled: true

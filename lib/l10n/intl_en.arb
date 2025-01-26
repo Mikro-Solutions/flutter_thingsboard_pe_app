@@ -1,5 +1,5 @@
 {
-  "appTitle": "ThingsBoard",
+  "appTitle": "Systemat",
   "home": "Home",
   "alarms": "Alarms",
   "devices": "Devices",
@@ -9,7 +9,7 @@
   "auditLogs": "Audit Logs",
   "logout": "Log Out",
   "login": "Log In",
-  "logoDefaultValue": "ThingsBoard Logo",
+  "logoDefaultValue": "Systemat Logo",
   "loginNotification": "Login to your account",
   "email": "Email",
   "emailRequireText": "Email is required.",

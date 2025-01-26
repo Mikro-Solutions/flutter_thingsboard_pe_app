@@ -111,7 +111,7 @@ class BottomNavbarItems extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            splashColor: Theme.of(context).primaryColor.withOpacity(.10),
+            splashColor: Theme.of(context).primaryColor.withValues(alpha: .10),
             onTap: () => onTap(index),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),

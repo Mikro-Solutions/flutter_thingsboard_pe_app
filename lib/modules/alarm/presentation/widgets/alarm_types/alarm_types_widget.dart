@@ -25,7 +25,7 @@ class AlarmTypesWidget extends StatelessWidget {
         constraints: const BoxConstraints(minHeight: 38),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.black.withOpacity(0.12),
+            color: Colors.black.withValues(alpha: 0.12),
           ),
           borderRadius: BorderRadius.circular(4),
         ),
@@ -61,7 +61,7 @@ class AlarmTypesWidget extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: Colors.black.withOpacity(0.38),
+                            color: Colors.black.withValues(alpha: 0.38),
                           ),
                         ),
                       ),
@@ -89,7 +89,7 @@ class AlarmTypesWidget extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
-                            color: Colors.black.withOpacity(0.04),
+                            color: Colors.black.withValues(alpha: 0.04),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -98,7 +98,7 @@ class AlarmTypesWidget extends StatelessWidget {
                                 child: Text(
                                   state.selectedTypes.elementAt(index),
                                   style: TextStyle(
-                                    color: Colors.black.withOpacity(0.87),
+                                    color: Colors.black.withValues(alpha: 0.87),
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
                                   ),
@@ -117,7 +117,7 @@ class AlarmTypesWidget extends StatelessWidget {
                                 },
                                 child: Icon(
                                   Icons.close,
-                                  color: Colors.black.withOpacity(0.54),
+                                  color: Colors.black.withValues(alpha: 0.54),
                                 ),
                               ),
                             ],
@@ -142,7 +142,7 @@ class AlarmTypesWidget extends StatelessWidget {
                             '+ Alarm type',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.black.withOpacity(0.38),
+                              color: Colors.black.withValues(alpha: 0.38),
                               fontWeight: FontWeight.w400,
                             ),
                           ),

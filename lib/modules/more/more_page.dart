@@ -53,7 +53,7 @@ class _MorePageState extends TbContextState<MorePage> {
                     child: IconButton(
                       icon: Icon(
                         Icons.settings,
-                        color: Colors.black.withOpacity(.54),
+                        color: Colors.black.withValues(alpha: .54),
                         size: 18,
                       ),
                       onPressed: () async {
@@ -72,7 +72,7 @@ class _MorePageState extends TbContextState<MorePage> {
                     child: Text(
                       userDetails.displayName,
                       style: TbTextStyles.labelLarge.copyWith(
-                        color: Colors.black.withOpacity(.76),
+                        color: Colors.black.withValues(alpha: .76),
                       ),
                     ),
                   ),
@@ -87,13 +87,13 @@ class _MorePageState extends TbContextState<MorePage> {
               Text(
                 _getAuthorityName(context),
                 style: TbTextStyles.labelSmall.copyWith(
-                  color: Colors.black.withOpacity(.38),
+                  color: Colors.black.withValues(alpha: .38),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 child: Divider(
-                  color: Colors.black.withOpacity(.05),
+                  color: Colors.black.withValues(alpha: .05),
                   thickness: 1,
                   height: 0,
                 ),
@@ -104,7 +104,7 @@ class _MorePageState extends TbContextState<MorePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 child: Divider(
-                  color: Colors.black.withOpacity(.05),
+                  color: Colors.black.withValues(alpha: .05),
                   thickness: 1,
                   height: 0,
                 ),

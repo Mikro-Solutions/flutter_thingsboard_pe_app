@@ -37,6 +37,7 @@ class _DashboardState extends TbContextState<DashboardWidget> {
   final dashboardLoading = ValueNotifier<bool>(true);
 
   late final DashboardController dashboardController;
+  @override
   late final TbLogger log;
   late WebUri _initialUrl;
 
@@ -280,7 +281,6 @@ class _DashboardState extends TbContextState<DashboardWidget> {
   @override
   void dispose() {
     dashboardLoading.dispose();
-    dashboardController.dispose();
     super.dispose();
   }
 

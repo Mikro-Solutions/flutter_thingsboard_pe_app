@@ -72,7 +72,7 @@ class _NotificationSlidableWidget extends State<NotificationSlidableWidget> {
                 widget.notification.status == PushNotificationStatus.READ,
               );
             },
-            backgroundColor: const Color(0xFFD12730).withOpacity(0.94),
+            backgroundColor: const Color(0xFFD12730).withValues(alpha: 0.94),
             foregroundColor: Colors.white,
             icon: Icons.delete,
             label: 'Delete',

@@ -27,7 +27,7 @@ class SelectRegionScreen extends TbContextStatelessWidget {
                     Text(
                       S.of(context).selectRegion,
                       style: TbTextStyles.titleMedium.copyWith(
-                        color: Colors.black.withOpacity(.76),
+                        color: Colors.black.withValues(alpha: .76),
                       ),
                     ),
                     const SizedBox(height: 16),

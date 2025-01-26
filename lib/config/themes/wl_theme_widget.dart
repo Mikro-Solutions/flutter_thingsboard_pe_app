@@ -19,14 +19,14 @@ class WlThemeWidget extends TbContextWidget {
   }) : super(tbContext);
 
   @override
-  State<StatefulWidget> createState() => _WlThemeWidgetState();
+  State<StatefulWidget> createState() => WlThemeWidgetState();
 
-  static _WlThemeWidgetState? of(BuildContext context) {
-    return context.findAncestorStateOfType<_WlThemeWidgetState>();
+  static WlThemeWidgetState? of(BuildContext context) {
+    return context.findAncestorStateOfType<WlThemeWidgetState>();
   }
 }
 
-class _WlThemeWidgetState extends TbContextState<WlThemeWidget> {
+class WlThemeWidgetState extends TbContextState<WlThemeWidget> {
   late WhiteLabelingParams _wlParams;
   late ThemeData _themeData;
 

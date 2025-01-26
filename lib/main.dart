@@ -18,6 +18,7 @@ import 'package:thingsboard_app/locator.dart';
 import 'package:thingsboard_app/utils/services/firebase/i_firebase_service.dart';
 import 'package:thingsboard_app/utils/services/layouts/i_layout_service.dart';
 import 'package:universal_platform/universal_platform.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +41,11 @@ void main() async {
   if (kDebugMode) {
     Bloc.observer = AppBlocObserver(getIt());
   }
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const ThingsboardApp());
 }

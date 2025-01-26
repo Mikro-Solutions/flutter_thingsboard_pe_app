@@ -66,7 +66,7 @@ class AssigneeListWidget extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.black.withOpacity(0.12),
+                    color: Colors.black.withValues(alpha: 0.12),
                   ),
                   borderRadius: BorderRadius.circular(4),
                 ),
@@ -79,7 +79,7 @@ class AssigneeListWidget extends StatelessWidget {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintStyle: TextStyle(
-                            color: Colors.black.withOpacity(0.38),
+                            color: Colors.black.withValues(alpha: 0.38),
                             fontWeight: FontWeight.w400,
                             fontSize: 14,
                           ),
@@ -97,7 +97,7 @@ class AssigneeListWidget extends StatelessWidget {
                     ),
                     Icon(
                       Icons.search,
-                      color: Colors.black.withOpacity(0.54),
+                      color: Colors.black.withValues(alpha: 0.54),
                       size: 24,
                     ),
                     const SizedBox(width: 16),
@@ -134,7 +134,7 @@ class AssigneeListWidget extends StatelessWidget {
                                 UserInfoWidget(
                                   avatar: Icon(
                                     Icons.account_circle,
-                                    color: Colors.black.withOpacity(0.38),
+                                    color: Colors.black.withValues(alpha: 0.38),
                                     size: 32,
                                   ),
                                   name: 'Assigned to me',

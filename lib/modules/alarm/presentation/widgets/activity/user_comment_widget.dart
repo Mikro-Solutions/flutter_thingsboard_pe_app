@@ -59,7 +59,7 @@ class _UserCommentState extends State<UserCommentWidget> {
           ),
           trailingIcon: Icon(
             Icons.edit_rounded,
-            color: Colors.black.withOpacity(.54),
+            color: Colors.black.withValues(alpha: .54),
           ),
           onPressed: () {
             context.read<AlarmActivityBloc>().add(
@@ -152,14 +152,14 @@ class _UserCommentState extends State<UserCommentWidget> {
                 Text(
                   '${widget.activity.firstName ?? ''} ${widget.activity.lastName ?? ''}',
                   style: TbTextStyles.labelLarge.copyWith(
-                    color: Colors.black.withOpacity(.76),
+                    color: Colors.black.withValues(alpha: .76),
                   ),
                 ),
                 const SizedBox(width: 4),
                 Text(
                   timeago.format(DateTime.now().subtract(diff)),
                   style: TbTextStyles.bodyMedium.copyWith(
-                    color: Colors.black.withOpacity(.38),
+                    color: Colors.black.withValues(alpha: .38),
                   ),
                 ),
                 const SizedBox(width: 4),
@@ -168,7 +168,7 @@ class _UserCommentState extends State<UserCommentWidget> {
                   child: Text(
                     ' ${S.of(context).edited}',
                     style: TbTextStyles.bodyMedium.copyWith(
-                      color: Colors.black.withOpacity(.38),
+                      color: Colors.black.withValues(alpha: .38),
                     ),
                   ),
                 ),
@@ -177,7 +177,7 @@ class _UserCommentState extends State<UserCommentWidget> {
             Text(
               widget.activity.comment.text,
               style: TbTextStyles.bodyLarge.copyWith(
-                color: Colors.black.withOpacity(.54),
+                color: Colors.black.withValues(alpha: .54),
               ),
             ),
           ],

@@ -179,7 +179,8 @@ class _LoginPageState extends TbPageState<LoginPage>
                                       child: Text(
                                         S.of(context).loginNotification,
                                         style: TbTextStyles.titleLarge.copyWith(
-                                          color: Colors.black.withOpacity(.87),
+                                          color: Colors.black
+                                              .withValues(alpha: .87),
                                         ),
                                       ),
                                     ),
@@ -202,7 +203,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                                                 style: TbTextStyles.bodyMedium
                                                     .copyWith(
                                                   color: Colors.black
-                                                      .withOpacity(.54),
+                                                      .withValues(alpha: .54),
                                                 ),
                                               ),
                                             ),
@@ -273,8 +274,8 @@ class _LoginPageState extends TbPageState<LoginPage>
                                         children: [
                                           Flexible(
                                             child: Divider(
-                                              color:
-                                                  Colors.black.withOpacity(.12),
+                                              color: Colors.black
+                                                  .withValues(alpha: .12),
                                             ),
                                           ),
                                           Padding(
@@ -286,14 +287,14 @@ class _LoginPageState extends TbPageState<LoginPage>
                                               style: TbTextStyles.bodyMedium
                                                   .copyWith(
                                                 color: Colors.black
-                                                    .withOpacity(.54),
+                                                    .withValues(alpha: .54),
                                               ),
                                             ),
                                           ),
                                           Flexible(
                                             child: Divider(
-                                              color:
-                                                  Colors.black.withOpacity(.12),
+                                              color: Colors.black
+                                                  .withValues(alpha: .12),
                                             ),
                                           ),
                                         ],
@@ -330,14 +331,14 @@ class _LoginPageState extends TbPageState<LoginPage>
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Colors.black
-                                                      .withOpacity(.12),
+                                                      .withValues(alpha: .12),
                                                 ),
                                               ),
                                               labelText: S.of(context).email,
                                               labelStyle: TbTextStyles.bodyLarge
                                                   .copyWith(
                                                 color: Colors.black
-                                                    .withOpacity(.54),
+                                                    .withValues(alpha: .54),
                                               ),
                                             ),
                                           ),
@@ -383,7 +384,9 @@ class _LoginPageState extends TbPageState<LoginPage>
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Colors.black
-                                                          .withOpacity(.12),
+                                                          .withValues(
+                                                        alpha: .12,
+                                                      ),
                                                     ),
                                                   ),
                                                   labelText:
@@ -392,7 +395,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                                                       .bodyLarge
                                                       .copyWith(
                                                     color: Colors.black
-                                                        .withOpacity(.54),
+                                                        .withValues(alpha: .54),
                                                   ),
                                                 ),
                                               );
@@ -526,7 +529,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                         filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade200.withOpacity(0.2),
+                            color: Colors.grey.shade200.withValues(alpha: 0.2),
                           ),
                           child: Container(
                             padding: EdgeInsets.only(bottom: bottomPadding),
@@ -561,7 +564,7 @@ class _LoginPageState extends TbPageState<LoginPage>
             child: Text(
               'Login with',
               style: TbTextStyles.bodyMedium.copyWith(
-                color: Colors.black.withOpacity(.54),
+                color: Colors.black.withValues(alpha: .54),
               ),
             ),
           ),

@@ -1,5 +1,5 @@
 {
-  "appTitle": "Thingsboard",
+  "appTitle": "Systemat",
 
   "home": "首頁",
   "alarms": "警報",
@@ -12,7 +12,7 @@
   "logout": "登出",
   "login": "登入",
 
-  "logoDefaultValue": "Thingsboard Logo",
+  "logoDefaultValue": "Systemat Logo",
   "loginNotification": "登入你的帳號",
   "email": "電子郵件",
   "emailRequireText": "輸入電子郵件",

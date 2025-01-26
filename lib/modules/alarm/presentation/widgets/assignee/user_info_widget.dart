@@ -46,7 +46,7 @@ class UserInfoWidget extends StatelessWidget {
                   ).boldSubString(
                     searchText ?? '',
                     highlightedColor: Theme.of(context).primaryColor,
-                    regularColor: Colors.black.withOpacity(.76),
+                    regularColor: Colors.black.withValues(alpha: .76),
                   ),
                   const SizedBox(height: 4),
                   Visibility(
@@ -60,7 +60,7 @@ class UserInfoWidget extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                       regularTextStyle: TbTextStyles.bodyMedium.copyWith(
-                        color: Colors.black.withOpacity(.38),
+                        color: Colors.black.withValues(alpha: .38),
                       ),
                     ),
                   ),

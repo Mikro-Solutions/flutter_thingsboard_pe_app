@@ -119,7 +119,7 @@ mixin ContactBasedBase<T extends ContactBased, P> on EntitiesBase<T, P> {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TbTextStyles.labelLarge.copyWith(
-                          color: Colors.black.withOpacity(.87),
+                          color: Colors.black.withValues(alpha: .87),
                         ),
                       ),
                     ),
@@ -131,7 +131,7 @@ mixin ContactBasedBase<T extends ContactBased, P> on EntitiesBase<T, P> {
                         ),
                       ),
                       style: TbTextStyles.bodyMedium.copyWith(
-                        color: Colors.black.withOpacity(.54),
+                        color: Colors.black.withValues(alpha: .54),
                       ),
                     ),
                   ],

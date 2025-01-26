@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "872966287286",
+    "project_id": "systemat-56cc7",
+    "storage_bucket": "systemat-56cc7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872966287286:android:484f930ce6d1ea663edb17",
+        "android_client_info": {
+          "package_name": "is.systemat.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhXgCxE8OLw7RJWorlN07kQbuTP_2y74k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872966287286:android:968dad307c057ca93edb17",
+        "android_client_info": {
+          "package_name": "org.thingsboard.pe.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhXgCxE8OLw7RJWorlN07kQbuTP_2y74k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -49,7 +49,7 @@ class _AlarmActivityWidgetState extends State<AlarmActivityWidget> {
           behavior: HitTestBehavior.opaque,
           child: Icon(
             Icons.refresh_rounded,
-            color: Colors.black.withOpacity(.54),
+            color: Colors.black.withValues(alpha: .54),
           ),
           onTap: () {
             getIt<AlarmActivityPaginationRepository>()
@@ -69,13 +69,13 @@ class _AlarmActivityWidgetState extends State<AlarmActivityWidget> {
                   return Container(
                     height: 192,
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(.03),
+                      color: Colors.black.withValues(alpha: .03),
                       border: Border(
                         top: BorderSide(
-                          color: Colors.black.withOpacity(.12),
+                          color: Colors.black.withValues(alpha: .12),
                         ),
                         bottom: BorderSide(
-                          color: Colors.black.withOpacity(.12),
+                          color: Colors.black.withValues(alpha: .12),
                         ),
                       ),
                     ),

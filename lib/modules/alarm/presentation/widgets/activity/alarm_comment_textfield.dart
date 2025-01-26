@@ -25,11 +25,11 @@ class _AlarmCommentTextFieldState extends State<AlarmCommentTextField> {
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).primaryColor.withOpacity(.32),
+            color: Theme.of(context).primaryColor.withValues(alpha: .32),
           ),
         ),
         hintStyle: TbTextStyles.bodyLarge.copyWith(
-          color: Colors.black.withOpacity(.38),
+          color: Colors.black.withValues(alpha: .38),
         ),
         hintText: S.of(context).addCommentMessage,
         suffixIcon: IconButton(

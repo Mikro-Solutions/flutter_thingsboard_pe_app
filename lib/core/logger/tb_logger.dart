@@ -12,7 +12,7 @@ class TbLogger {
         lineLength: 200,
         colors: false,
         printEmojis: true,
-        printTime: false,
+        dateTimeFormat: DateTimeFormat.none,
       ),
     ),
     output: TbLogOutput(),

@@ -30,13 +30,13 @@ class TbErrorWidget extends StatelessWidget {
         Text(
           title ?? S.of(context).failedToLoadTheList,
           style: TbTextStyles.titleXs.copyWith(
-            color: Colors.black.withOpacity(.87),
+            color: Colors.black.withValues(alpha: .87),
           ),
         ),
         Text(
           message ?? S.of(context).tryRefreshing,
           style: TbTextStyles.bodyLarge.copyWith(
-            color: Colors.black.withOpacity(.54),
+            color: Colors.black.withValues(alpha: .54),
           ),
         ),
         const SizedBox(height: 32),
@@ -45,7 +45,8 @@ class TbErrorWidget extends StatelessWidget {
           child: TextButton(
             onPressed: onRefresh,
             style: TextButton.styleFrom(
-              backgroundColor: Theme.of(context).primaryColor.withOpacity(.1),
+              backgroundColor:
+                  Theme.of(context).primaryColor.withValues(alpha: .1),
               fixedSize: const Size(216, 48),
             ),
             child: Row(
