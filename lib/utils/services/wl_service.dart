@@ -289,14 +289,11 @@ class WlService {
     } else {
       image = Padding(
         padding: const EdgeInsets.only(bottom: 4.0),
-        child: Utils.imageFromTbImage(
-          context,
-          tbClient,
-          wlParams.logoImageUrl!,
-          height: height,
-          semanticLabel: 'Systemat Logo',
-          loginLogo: isLogin,
-        ),
+        child: Utils.imageFromTbImage(context, tbClient, wlParams.logoImageUrl!,
+            height: height,
+            semanticLabel: 'Systemat Logo',
+            loginLogo: isLogin,
+            color: isLogin ? themeData.primaryColor : null),
       );
     }
     if (isLogin) {

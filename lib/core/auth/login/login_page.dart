@@ -9,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:thingsboard_app/config/themes/tb_theme_utils.dart';
 import 'package:thingsboard_app/constants/assets_path.dart';
 import 'package:thingsboard_app/core/auth/login/bloc/auth_bloc.dart';
 import 'package:thingsboard_app/core/auth/login/bloc/auth_events.dart';
@@ -111,7 +112,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                                   children: [
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.center,
                                       children: [
                                         tbContext.wlService.loginLogoImage !=
                                                 null
@@ -422,6 +423,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                                     const Spacer(),
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
+                                        backgroundColor: TbThemeUtils.tbPrimary,
                                         padding: const EdgeInsets.symmetric(
                                           vertical: 16,
                                         ),
@@ -431,7 +433,8 @@ class _LoginPageState extends TbPageState<LoginPage>
                                       },
                                       child: Text(
                                         S.of(context).login,
-                                        style: TbTextStyles.labelMedium,
+                                        style: TbTextStyles.labelMedium
+                                            .copyWith(color: Colors.white),
                                       ),
                                     ),
                                     if (state.selfRegistrationParams != null)
