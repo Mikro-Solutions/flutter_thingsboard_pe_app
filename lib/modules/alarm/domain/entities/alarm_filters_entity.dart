@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class AlarmFiltersEntity extends Equatable {
   const AlarmFiltersEntity({

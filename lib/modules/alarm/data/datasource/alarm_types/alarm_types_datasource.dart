@@ -1,5 +1,5 @@
-import 'package:thingsboard_app/modules/alarm/data/datasource/alarm_types/i_alarm_types_datasource.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/modules/alarm/data/datasource/alarm_types/i_alarm_types_datasource.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class AlarmTypesDatasource implements IAlarmTypesDatasource {
   const AlarmTypesDatasource({required this.tbClient});

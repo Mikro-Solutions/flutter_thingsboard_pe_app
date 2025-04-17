@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 final alarmSeverityColors = <AlarmSeverity, Color>{
   AlarmSeverity.CRITICAL: const Color(0xFFD12730),

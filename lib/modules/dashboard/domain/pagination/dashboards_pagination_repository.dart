@@ -1,6 +1,6 @@
-import 'package:thingsboard_app/modules/dashboard/domain/pagination/dashboards_query_ctrl.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/services/pagination_repository.dart';
+import 'package:systemat_app/modules/dashboard/domain/pagination/dashboards_query_ctrl.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/services/pagination_repository.dart';
 
 final class DashboardsPaginationRepository
     extends PaginationRepository<PageLink, DashboardInfo> {

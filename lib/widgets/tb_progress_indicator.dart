@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:thingsboard_app/constants/assets_path.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
+import 'package:systemat_app/constants/assets_path.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
 
 class TbProgressIndicator extends ProgressIndicator {
   final double size;
@@ -11,17 +11,13 @@ class TbProgressIndicator extends ProgressIndicator {
 
   const TbProgressIndicator(
     this.tbContext, {
-    Key? key,
+    super.key,
     this.size = 36.0,
-    Animation<Color?>? valueColor,
-    String? semanticsLabel,
-    String? semanticsValue,
+    super.valueColor,
+    super.semanticsLabel,
+    super.semanticsValue,
   }) : super(
-          key: key,
           value: null,
-          valueColor: valueColor,
-          semanticsLabel: semanticsLabel,
-          semanticsValue: semanticsValue,
         );
 
   @override

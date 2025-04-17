@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
 
 typedef DashboardTitleCallback = void Function(String title);
 

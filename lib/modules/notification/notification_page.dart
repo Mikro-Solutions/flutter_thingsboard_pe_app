@@ -1,17 +1,17 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/notification/controllers/notification_query_ctrl.dart';
-import 'package:thingsboard_app/modules/notification/repository/notification_pagination_repository.dart';
-import 'package:thingsboard_app/modules/notification/repository/notification_repository.dart';
-import 'package:thingsboard_app/modules/notification/service/notifications_local_service.dart';
-import 'package:thingsboard_app/modules/notification/widgets/filter_segmented_button.dart';
-import 'package:thingsboard_app/modules/notification/widgets/notification_list.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/services/firebase/i_firebase_service.dart';
-import 'package:thingsboard_app/utils/ui/back_button_widget.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/notification/controllers/notification_query_ctrl.dart';
+import 'package:systemat_app/modules/notification/repository/notification_pagination_repository.dart';
+import 'package:systemat_app/modules/notification/repository/notification_repository.dart';
+import 'package:systemat_app/modules/notification/service/notifications_local_service.dart';
+import 'package:systemat_app/modules/notification/widgets/filter_segmented_button.dart';
+import 'package:systemat_app/modules/notification/widgets/notification_list.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/services/firebase/i_firebase_service.dart';
+import 'package:systemat_app/utils/ui/back_button_widget.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
 
 enum NotificationsFilter { all, unread }
 

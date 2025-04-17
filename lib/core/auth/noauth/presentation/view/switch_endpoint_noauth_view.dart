@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:thingsboard_app/core/auth/noauth/di/noauth_di.dart';
-import 'package:thingsboard_app/core/auth/noauth/presentation/bloc/bloc.dart';
-import 'package:thingsboard_app/core/auth/noauth/presentation/widgets/noauth_loading_widget.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/locator.dart';
+import 'package:systemat_app/core/auth/noauth/di/noauth_di.dart';
+import 'package:systemat_app/core/auth/noauth/presentation/bloc/bloc.dart';
+import 'package:systemat_app/core/auth/noauth/presentation/widgets/noauth_loading_widget.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/locator.dart';
 
 class SwitchEndpointNoAuthView extends TbPageWidget {
   SwitchEndpointNoAuthView({super.key, 

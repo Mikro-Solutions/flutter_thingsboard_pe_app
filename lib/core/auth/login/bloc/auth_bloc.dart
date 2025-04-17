@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recaptcha_enterprise_flutter/recaptcha.dart';
 import 'package:recaptcha_enterprise_flutter/recaptcha_client.dart';
-import 'package:thingsboard_app/core/auth/login/bloc/bloc.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/modules/version/route/version_route.dart';
-import 'package:thingsboard_app/modules/version/route/version_route_arguments.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/core/auth/login/bloc/bloc.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/modules/version/route/version_route.dart';
+import 'package:systemat_app/modules/version/route/version_route_arguments.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({

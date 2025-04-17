@@ -4,14 +4,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:thingsboard_app/constants/assets_path.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/services/device_profile_cache.dart';
-import 'package:thingsboard_app/utils/services/entity_query_api.dart';
-import 'package:thingsboard_app/utils/utils.dart';
+import 'package:systemat_app/constants/assets_path.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/services/device_profile_cache.dart';
+import 'package:systemat_app/utils/services/entity_query_api.dart';
+import 'package:systemat_app/utils/utils.dart';
 
 mixin DeviceProfilesBase on EntitiesBase<DeviceProfileInfo, PageLink> {
   final RefreshDeviceCounts refreshDeviceCounts = RefreshDeviceCounts();
@@ -23,13 +22,14 @@ mixin DeviceProfilesBase on EntitiesBase<DeviceProfileInfo, PageLink> {
   String get noItemsFoundText => 'No devices found';
 
   @override
-  Future<PageData<DeviceProfileInfo>> fetchEntities(PageLink pageLink) {
-    return DeviceProfileCache.getDeviceProfileInfos(tbClient, pageLink);
+  Future<PageData<DeviceProfileInfo>> fetchEntities(PageLink pageKey) {
+    return DeviceProfileCache.getDeviceProfileInfos(tbClient, pageKey);
   }
 
   @override
-  void onEntityTap(DeviceProfileInfo deviceProfile) {
-    navigateTo('/deviceList?deviceType=${Uri.encodeComponent(deviceProfile.name)}');
+  void onEntityTap(DeviceProfileInfo entity) {
+    navigateTo(
+        '/deviceList?deviceType=${Uri.encodeComponent(entity.name)}',);
   }
 
   @override
@@ -49,9 +49,9 @@ mixin DeviceProfilesBase on EntitiesBase<DeviceProfileInfo, PageLink> {
   @override
   Widget buildEntityGridCard(
     BuildContext context,
-    DeviceProfileInfo deviceProfile,
+    DeviceProfileInfo entity,
   ) {
-    return DeviceProfileCard(tbContext, deviceProfile);
+    return DeviceProfileCard(tbContext, entity);
   }
 
   @override
@@ -67,8 +67,7 @@ class RefreshDeviceCounts {
 class AllDevicesCard extends TbContextWidget {
   final RefreshDeviceCounts refreshDeviceCounts;
 
-  AllDevicesCard(TbContext tbContext, this.refreshDeviceCounts, {super.key})
-      : super(tbContext);
+  AllDevicesCard(super.tbContext, this.refreshDeviceCounts, {super.key});
 
   @override
   State<StatefulWidget> createState() => _AllDevicesCardState();
@@ -276,8 +275,7 @@ class _AllDevicesCardState extends TbContextState<AllDevicesCard> {
 class DeviceProfileCard extends TbContextWidget {
   final DeviceProfileInfo deviceProfile;
 
-  DeviceProfileCard(TbContext tbContext, this.deviceProfile, {super.key})
-      : super(tbContext);
+  DeviceProfileCard(super.tbContext, this.deviceProfile, {super.key});
 
   @override
   State<StatefulWidget> createState() => _DeviceProfileCardState();
@@ -409,7 +407,8 @@ class _DeviceProfileCardState extends TbContextState<DeviceProfileCard> {
               },
             ),
             onTap: () {
-              navigateTo('/deviceList?active=true&deviceType=${Uri.encodeComponent(entity.name)}');
+              navigateTo(
+                  '/deviceList?active=true&deviceType=${Uri.encodeComponent(entity.name)}',);
             },
           ),
           const Divider(height: 1),

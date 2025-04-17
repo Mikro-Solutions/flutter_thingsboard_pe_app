@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarm_types/bloc.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/alarm_filter_widget.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/alarm_types/types_list_widget.dart';
-import 'package:thingsboard_app/utils/ui/ui_utils.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarm_types/bloc.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/alarm_filter_widget.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/alarm_types/types_list_widget.dart';
+import 'package:systemat_app/utils/ui/ui_utils.dart';
 
 class AlarmTypesWidget extends StatelessWidget {
   const AlarmTypesWidget({

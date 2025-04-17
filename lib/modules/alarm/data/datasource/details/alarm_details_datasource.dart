@@ -1,5 +1,5 @@
-import 'package:thingsboard_app/modules/alarm/data/datasource/details/i_alarm_details_datasource.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/modules/alarm/data/datasource/details/i_alarm_details_datasource.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class AlarmDetailsDatasource implements IAlarmDetailsDatasource {
   const AlarmDetailsDatasource(this.thingsboardClient);

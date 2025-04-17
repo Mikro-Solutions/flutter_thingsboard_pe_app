@@ -32,12 +32,12 @@ class TwoPageView extends StatefulWidget {
   final TwoPageViewController? controller;
 
   const TwoPageView({
-    Key? key,
+    super.key,
     required this.first,
     required this.second,
     this.controller,
     this.duration = const Duration(milliseconds: 250),
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() => _TwoPageViewState();

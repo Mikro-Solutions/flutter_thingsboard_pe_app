@@ -33,18 +33,22 @@ class PaginationGridWidget<T, B> extends StatelessWidget {
           ),
           SliverPadding(
             padding: const EdgeInsets.all(16),
-            sliver: PagedSliverGrid<T, B>(
-              pagingController: pagingController,
-              builderDelegate: builderDelegate,
-              gridDelegate: gridDelegate ??
-                  SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: gridChildAspectRatio ?? 156 / 150,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    crossAxisCount: Orientation.portrait == orientation
-                        ? (isMobile(context) ? 2 : 4)
-                        : (isMobile(context) ? 4 : 5),
-                  ),
+            sliver: PagingListener(
+              controller: pagingController,
+              builder: (context, state, fetchNextPage) => PagedSliverGrid<T, B>(
+                builderDelegate: builderDelegate,
+                gridDelegate: gridDelegate ??
+                    SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: gridChildAspectRatio ?? 156 / 150,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      crossAxisCount: Orientation.portrait == orientation
+                          ? (isMobile(context) ? 2 : 4)
+                          : (isMobile(context) ? 4 : 5),
+                    ),
+                state: state,
+                fetchNextPage: fetchNextPage,
+              ),
             ),
           ),
         ],

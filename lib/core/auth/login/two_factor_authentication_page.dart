@@ -6,11 +6,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:thingsboard_app/core/auth/login/login_page_background.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/core/auth/login/login_page_background.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
 
 typedef ProviderDescFunction = String Function(
   BuildContext context,
@@ -63,8 +62,7 @@ final Map<TwoFaProviderType, TwoFactorAuthProviderLoginData>
 };
 
 class TwoFactorAuthenticationPage extends TbPageWidget {
-  TwoFactorAuthenticationPage(TbContext tbContext, {super.key})
-      : super(tbContext);
+  TwoFactorAuthenticationPage(super.tbContext, {super.key});
 
   @override
   State<StatefulWidget> createState() => _TwoFactorAuthenticationPageState();
@@ -437,7 +435,7 @@ class _TwoFactorAuthenticationPageState
         errorText: S.of(context).verificationCodeInvalid,
       ),
       FormBuilderValidators.match(
-        pattern,
+        pattern as RegExp,
         errorText: S.of(context).verificationCodeInvalid,
       ),
     ];

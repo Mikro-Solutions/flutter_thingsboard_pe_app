@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/modules/customer/customers_list.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/modules/customer/customers_list.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
 
 class CustomersPage extends TbContextWidget {
   final bool searchMode;
 
-  CustomersPage(TbContext tbContext, {super.key, this.searchMode = false})
-      : super(tbContext);
+  CustomersPage(super.tbContext, {super.key, this.searchMode = false});
 
   @override
   State<StatefulWidget> createState() => _CustomersPageState();

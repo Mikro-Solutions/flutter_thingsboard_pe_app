@@ -7,7 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class WidgetMobileActionResult<T extends MobileActionResult> {
@@ -302,7 +302,8 @@ class WidgetActionHandler with HasTbContext {
         );
       }
       var position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
+        locationSettings:
+            const LocationSettings(accuracy: LocationAccuracy.high),
       );
       return WidgetMobileActionResult.successResult(
         MobileActionResult.location(position.latitude, position.longitude),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
 
 class MainItemWidget extends TbContextWidget {
   MainItemWidget(

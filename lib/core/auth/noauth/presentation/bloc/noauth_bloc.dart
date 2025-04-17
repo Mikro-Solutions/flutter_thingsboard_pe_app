@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thingsboard_app/core/auth/noauth/domain/usecases/switch_endpoint_usecase.dart';
-import 'package:thingsboard_app/core/auth/noauth/presentation/bloc/bloc.dart';
+import 'package:systemat_app/core/auth/noauth/domain/usecases/switch_endpoint_usecase.dart';
+import 'package:systemat_app/core/auth/noauth/presentation/bloc/bloc.dart';
 
 class NoAuthBloc extends Bloc<NoAuthEvent, NoAuthState> {
   NoAuthBloc({required this.switchEndpointUseCase})

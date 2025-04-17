@@ -1,6 +1,6 @@
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 abstract base class PaginationRepository<T, B> {
   PaginationRepository({
@@ -44,8 +44,8 @@ abstract base class PaginationRepository<T, B> {
       final isLastPage = !pageData.hasNext;
       if (refresh) {
         var state = pagingController.value;
-        if (state.itemList != null) {
-          state.itemList!.clear();
+        if (state.items != null) {
+          state.items!.clear();
         }
       }
       if (isLastPage) {

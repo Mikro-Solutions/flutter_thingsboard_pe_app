@@ -1,15 +1,15 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:thingsboard_app/constants/app_constants.dart';
-import 'package:thingsboard_app/core/auth/noauth/di/noauth_di.dart';
-import 'package:thingsboard_app/core/auth/noauth/presentation/bloc/bloc.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/logger/tb_logger.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/services/endpoint/i_endpoint_service.dart';
-import 'package:thingsboard_app/utils/services/firebase/i_firebase_service.dart';
+import 'package:systemat_app/constants/app_constants.dart';
+import 'package:systemat_app/core/auth/noauth/di/noauth_di.dart';
+import 'package:systemat_app/core/auth/noauth/presentation/bloc/bloc.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/core/logger/tb_logger.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/services/endpoint/i_endpoint_service.dart';
+import 'package:systemat_app/utils/services/firebase/i_firebase_service.dart';
 
 import '../../mocks.dart';
 

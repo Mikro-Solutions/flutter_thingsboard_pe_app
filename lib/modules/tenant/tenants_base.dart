@@ -1,5 +1,5 @@
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 mixin TenantsBase on EntitiesBase<Tenant, PageLink> {
   @override
@@ -9,12 +9,12 @@ mixin TenantsBase on EntitiesBase<Tenant, PageLink> {
   String get noItemsFoundText => 'No tenants found';
 
   @override
-  Future<PageData<Tenant>> fetchEntities(PageLink pageLink) {
-    return tbClient.getTenantService().getTenants(pageLink);
+  Future<PageData<Tenant>> fetchEntities(PageLink pageKey) {
+    return tbClient.getTenantService().getTenants(pageKey);
   }
 
   @override
-  void onEntityTap(Tenant tenant) {
-    navigateTo('/tenant/${tenant.id!.id}');
+  void onEntityTap(Tenant entity) {
+    navigateTo('/tenant/${entity.id!.id}');
   }
 }

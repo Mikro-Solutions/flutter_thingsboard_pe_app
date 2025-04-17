@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/dashboard/presentation/controller/dashboard_controller.dart';
-import 'package:thingsboard_app/modules/dashboard/presentation/view/dashboard_permission_error_view.dart';
-import 'package:thingsboard_app/modules/dashboard/presentation/widgets/dashboard_widget.dart';
-import 'package:thingsboard_app/utils/services/permission/i_permission_service.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/dashboard/presentation/controller/dashboard_controller.dart';
+import 'package:systemat_app/modules/dashboard/presentation/view/dashboard_permission_error_view.dart';
+import 'package:systemat_app/modules/dashboard/presentation/widgets/dashboard_widget.dart';
+import 'package:systemat_app/utils/services/permission/i_permission_service.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
 
 class SingleDashboardView extends TbContextWidget {
   SingleDashboardView(
-    TbContext tbContext, {
+    super.tbContext, {
     required this.id,
     this.title,
     this.state,
     this.hideToolbar,
     super.key,
-  }) : super(tbContext);
+  });
 
   final String id;
   final String? title;

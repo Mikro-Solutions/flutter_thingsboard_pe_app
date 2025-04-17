@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarm_types/bloc.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarm_types/bloc.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/widgets/tb_progress_indicator.dart';
 
 class TypesListWidget extends StatelessWidget {
   const TypesListWidget({
@@ -55,54 +55,59 @@ class TypesListWidget extends StatelessWidget {
               ),
             ),
             Flexible(
-              child: PagedListView<PageLink, AlarmType>.separated(
-                pagingController: getIt<AlarmTypesBloc>()
+              child: PagingListener(
+                controller: getIt<AlarmTypesBloc>()
                     .paginationRepository
                     .pagingController,
-                shrinkWrap: true,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                builderDelegate: PagedChildBuilderDelegate(
-                  itemBuilder: (context, item, index) {
-                    return GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        getIt<AlarmTypesBloc>().add(
-                          AlarmTypesSelectedEvent(type: item.type),
-                        );
-                        onChanged();
-                      },
-                      child: Row(
-                        children: [
-                          Flexible(
-                            child: Text(
-                              item.type,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                height: 1.5,
+                builder: (context, state, fetchNextPage) =>
+                    PagedListView<PageLink, AlarmType>.separated(
+                  shrinkWrap: true,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  builderDelegate: PagedChildBuilderDelegate(
+                    itemBuilder: (context, item, index) {
+                      return GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          getIt<AlarmTypesBloc>().add(
+                            AlarmTypesSelectedEvent(type: item.type),
+                          );
+                          onChanged();
+                        },
+                        child: Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                item.type,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  height: 1.5,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                  firstPageProgressIndicatorBuilder: (_) {
-                    return Container(
-                      height: 200,
-                      color: const Color(0x99FFFFFF),
-                      child: Center(
-                        child: TbProgressIndicator(
-                          tbContext,
-                          size: 50.0,
+                          ],
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                    firstPageProgressIndicatorBuilder: (_) {
+                      return Container(
+                        height: 200,
+                        color: const Color(0x99FFFFFF),
+                        child: Center(
+                          child: TbProgressIndicator(
+                            tbContext,
+                            size: 50.0,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  separatorBuilder: (_, __) =>
+                      const Divider(thickness: 1, height: 32),
+                  state: state,
+                  fetchNextPage: fetchNextPage,
                 ),
-                separatorBuilder: (_, __) =>
-                    const Divider(thickness: 1, height: 32),
               ),
             ),
           ],

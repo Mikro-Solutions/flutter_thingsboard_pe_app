@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:preload_page_view/preload_page_view.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/alarm/alarms_list.dart';
-import 'package:thingsboard_app/modules/alarm/di/alarms_di.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarms_bloc.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarms_states.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/view/alarms_filter_page.dart';
-import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/alarm/alarms_list.dart';
+import 'package:systemat_app/modules/alarm/di/alarms_di.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarms_bloc.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarms_states.dart';
+import 'package:systemat_app/modules/alarm/presentation/view/alarms_filter_page.dart';
+import 'package:systemat_app/utils/ui/tb_text_styles.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
 
 class AlarmsPage extends TbContextWidget {
   AlarmsPage(
-    TbContext tbContext, {
+    super.tbContext, {
     this.searchMode = false,
     super.key,
-  }) : super(tbContext);
+  });
 
   final bool searchMode;
 

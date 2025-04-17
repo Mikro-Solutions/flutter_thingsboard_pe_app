@@ -4,12 +4,12 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:intl/intl.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/modules/alarm/alarms_base.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/details/alarm_details_content_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
-import 'package:thingsboard_app/utils/utils.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/modules/alarm/alarms_base.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/details/alarm_details_content_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/ui/tb_text_styles.dart';
+import 'package:systemat_app/utils/utils.dart';
 
 class AlarmDetailsWidget extends StatefulWidget {
   AlarmDetailsWidget({

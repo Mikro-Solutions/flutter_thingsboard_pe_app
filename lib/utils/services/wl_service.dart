@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:thingsboard_app/config/themes/tb_theme_utils.dart';
-import 'package:thingsboard_app/config/themes/wl_theme_widget.dart';
-import 'package:thingsboard_app/constants/assets_path.dart';
-import 'package:thingsboard_app/core/auth/login/region.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/utils.dart';
+import 'package:systemat_app/config/themes/tb_theme_utils.dart';
+import 'package:systemat_app/config/themes/wl_theme_widget.dart';
+import 'package:systemat_app/constants/assets_path.dart';
+import 'package:systemat_app/core/auth/login/region.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/utils.dart';
 
 const DEFAULT_LOGO_URL = 'LOGO-PE';
 
@@ -293,7 +293,7 @@ class WlService {
             height: height,
             semanticLabel: 'Systemat Logo',
             loginLogo: isLogin,
-            color: isLogin ? themeData.primaryColor : null),
+            color: isLogin ? themeData.primaryColor : null,),
       );
     }
     if (isLogin) {

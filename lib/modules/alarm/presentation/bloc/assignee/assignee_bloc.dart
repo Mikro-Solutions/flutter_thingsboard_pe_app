@@ -1,10 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thingsboard_app/modules/alarm/domain/entities/assignee_entity.dart';
-import 'package:thingsboard_app/modules/alarm/domain/pagination/assignee/assignee_query_ctrl.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/assignee/bloc.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/filters/i_alarm_filters_service.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/services/pagination_repository.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:systemat_app/modules/alarm/domain/entities/assignee_entity.dart';
+import 'package:systemat_app/modules/alarm/domain/pagination/assignee/assignee_query_ctrl.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/assignee/bloc.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/filters/i_alarm_filters_service.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/services/pagination_repository.dart';
 
 class AssigneeBloc extends Bloc<AssigneeEvent, AssigneeState> {
   AssigneeBloc({
@@ -29,7 +30,7 @@ class AssigneeBloc extends Bloc<AssigneeEvent, AssigneeState> {
         queryCtrl.onSearchText(null);
 
         final assignee =
-            paginationRepository.pagingController.itemList?.firstWhere(
+            paginationRepository.pagingController.items?.firstWhere(
           (assignee) => assignee.userInfo.id.id == event.userId,
         );
 

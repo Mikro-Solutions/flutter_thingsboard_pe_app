@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:thingsboard_app/modules/alarm/domain/entities/assignee_entity.dart';
+import 'package:systemat_app/modules/alarm/domain/entities/assignee_entity.dart';
 
 sealed class AlarmAssigneeState extends Equatable {
   const AlarmAssigneeState();

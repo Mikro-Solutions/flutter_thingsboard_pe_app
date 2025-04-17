@@ -1,8 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
-import 'package:thingsboard_app/config/routes/router.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/modules/home/home_page.dart';
+import 'package:systemat_app/config/routes/router.dart';
+import 'package:systemat_app/modules/home/home_page.dart';
 
 class HomeRoutes extends TbRoutes {
   late var homeHandler = Handler(
@@ -11,7 +10,7 @@ class HomeRoutes extends TbRoutes {
     },
   );
 
-  HomeRoutes(TbContext tbContext) : super(tbContext);
+  HomeRoutes(super.tbContext);
 
   @override
   void doRegisterRoutes(router) {

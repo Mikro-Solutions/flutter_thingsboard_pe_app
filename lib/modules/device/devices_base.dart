@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:thingsboard_app/constants/assets_path.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/services/device_profile_cache.dart';
-import 'package:thingsboard_app/utils/services/entity_query_api.dart';
-import 'package:thingsboard_app/utils/utils.dart';
+import 'package:systemat_app/constants/assets_path.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/services/device_profile_cache.dart';
+import 'package:systemat_app/utils/services/entity_query_api.dart';
+import 'package:systemat_app/utils/utils.dart';
 
 mixin DevicesBase on EntitiesBase<EntityData, EntityDataQuery> {
   @override
@@ -21,29 +20,29 @@ mixin DevicesBase on EntitiesBase<EntityData, EntityDataQuery> {
   String get noItemsFoundText => 'No devices found';
 
   @override
-  Future<PageData<EntityData>> fetchEntities(EntityDataQuery dataQuery) {
-    return tbClient.getEntityQueryService().findEntityDataByQuery(dataQuery);
+  Future<PageData<EntityData>> fetchEntities(EntityDataQuery pageKey) {
+    return tbClient.getEntityQueryService().findEntityDataByQuery(pageKey);
   }
 
   @override
-  void onEntityTap(EntityData device) async {
+  void onEntityTap(EntityData entity) async {
     var profile = await DeviceProfileCache.getDeviceProfileInfo(
       tbClient,
-      device.field('type')!,
-      device.entityId.id!,
+      entity.field('type')!,
+      entity.entityId.id!,
     );
     if (profile.defaultDashboardId != null) {
       if (hasGenericPermission(Resource.WIDGETS_BUNDLE, Operation.READ) &&
           hasGenericPermission(Resource.WIDGET_TYPE, Operation.READ)) {
         var dashboardId = profile.defaultDashboardId!.id!;
         var state = Utils.createDashboardEntityState(
-          device.entityId,
-          entityName: device.field('name')!,
-          entityLabel: device.field('label')!,
+          entity.entityId,
+          entityName: entity.field('name')!,
+          entityLabel: entity.field('label')!,
         );
         navigateToDashboard(
           dashboardId,
-          dashboardTitle: device.field('name'),
+          dashboardTitle: entity.field('name'),
           state: state,
         );
       } else {
@@ -61,18 +60,18 @@ mixin DevicesBase on EntitiesBase<EntityData, EntityDataQuery> {
   }
 
   @override
-  Widget buildEntityListCard(BuildContext context, EntityData device) {
-    return _buildEntityListCard(context, device, false);
+  Widget buildEntityListCard(BuildContext context, EntityData entity) {
+    return _buildEntityListCard(context, entity, false);
   }
 
   @override
-  Widget buildEntityListWidgetCard(BuildContext context, EntityData device) {
-    return _buildEntityListCard(context, device, true);
+  Widget buildEntityListWidgetCard(BuildContext context, EntityData entity) {
+    return _buildEntityListCard(context, entity, true);
   }
 
   @override
-  Widget buildEntityGridCard(BuildContext context, EntityData device) {
-    return Text(device.field('name')!);
+  Widget buildEntityGridCard(BuildContext context, EntityData entity) {
+    return Text(entity.field('name')!);
   }
 
   bool displayCardImage(bool listWidgetCard) => listWidgetCard;
@@ -122,12 +121,12 @@ class DeviceCard extends TbContextWidget {
   final bool displayImage;
 
   DeviceCard(
-    TbContext tbContext, {
+    super.tbContext, {
     super.key,
     required this.device,
     this.listWidgetCard = false,
     this.displayImage = false,
-  }) : super(tbContext);
+  });
 
   @override
   State<StatefulWidget> createState() => _DeviceCardState();

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/auth/login/region.dart';
-import 'package:thingsboard_app/core/auth/login/select_region_screen.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/utils/services/local_database/i_local_database_service.dart';
-import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
+import 'package:systemat_app/core/auth/login/region.dart';
+import 'package:systemat_app/core/auth/login/select_region_screen.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/utils/services/local_database/i_local_database_service.dart';
+import 'package:systemat_app/widgets/tb_progress_indicator.dart';
 
 class ThingsboardInitRegionApp extends TbPageWidget {
-  ThingsboardInitRegionApp(TbContext tbContext, {Key? key})
-      : super(tbContext, key: key);
+  ThingsboardInitRegionApp(super.tbContext, {super.key});
 
   @override
   State<StatefulWidget> createState() => _ThingsboardInitAppState();

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/dashboard/presentation/view/dashboard_permission_error_view.dart';
-import 'package:thingsboard_app/modules/dashboard/presentation/view/dashboards_page.dart';
-import 'package:thingsboard_app/modules/dashboard/presentation/view/home_dashboard_page.dart';
-import 'package:thingsboard_app/modules/tenant/tenants_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/services/permission/i_permission_service.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/dashboard/presentation/view/dashboard_permission_error_view.dart';
+import 'package:systemat_app/modules/dashboard/presentation/view/dashboards_page.dart';
+import 'package:systemat_app/modules/dashboard/presentation/view/home_dashboard_page.dart';
+import 'package:systemat_app/modules/tenant/tenants_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/services/permission/i_permission_service.dart';
 
 class HomePage extends TbContextWidget {
-  HomePage(TbContext tbContext, {super.key}) : super(tbContext);
+  HomePage(super.tbContext, {super.key});
 
   @override
   State<StatefulWidget> createState() => _HomePageState();

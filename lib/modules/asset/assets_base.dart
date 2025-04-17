@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 mixin AssetsBase on EntitiesBase<Asset, PageLink> {
   @override
@@ -10,28 +10,28 @@ mixin AssetsBase on EntitiesBase<Asset, PageLink> {
   String get noItemsFoundText => 'No assets found';
 
   @override
-  Future<PageData<Asset>> fetchEntities(PageLink pageLink) {
-    return tbClient.getAssetService().getUserAssets(pageLink);
+  Future<PageData<Asset>> fetchEntities(PageLink pageKey) {
+    return tbClient.getAssetService().getUserAssets(pageKey);
   }
 
   @override
-  void onEntityTap(Asset asset) {
-    navigateTo('/asset/${asset.id!.id}');
+  void onEntityTap(Asset entity) {
+    navigateTo('/asset/${entity.id!.id}');
   }
 
   @override
-  Widget buildEntityListCard(BuildContext context, Asset asset) {
-    return _buildCard(context, asset);
+  Widget buildEntityListCard(BuildContext context, Asset entity) {
+    return _buildCard(context, entity);
   }
 
   @override
-  Widget buildEntityListWidgetCard(BuildContext context, Asset asset) {
-    return _buildListWidgetCard(context, asset);
+  Widget buildEntityListWidgetCard(BuildContext context, Asset entity) {
+    return _buildListWidgetCard(context, entity);
   }
 
   @override
-  Widget buildEntityGridCard(BuildContext context, Asset asset) {
-    return Text(asset.name);
+  Widget buildEntityGridCard(BuildContext context, Asset entity) {
+    return Text(entity.name);
   }
 
   Widget _buildCard(context, Asset asset) {

@@ -8,17 +8,16 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:recaptcha_enterprise_flutter/recaptcha_action.dart';
 import 'package:recaptcha_enterprise_flutter/recaptcha_client.dart';
-import 'package:thingsboard_app/core/auth/login/bloc/bloc.dart';
-import 'package:thingsboard_app/core/auth/login/login_page_background.dart';
-import 'package:thingsboard_app/core/auth/oauth2/app_secret_provider.dart';
-import 'package:thingsboard_app/core/auth/signup/signup_field_widget.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
+import 'package:systemat_app/core/auth/login/bloc/bloc.dart';
+import 'package:systemat_app/core/auth/login/login_page_background.dart';
+import 'package:systemat_app/core/auth/oauth2/app_secret_provider.dart';
+import 'package:systemat_app/core/auth/signup/signup_field_widget.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/widgets/tb_progress_indicator.dart';
 
 class SignUpPage extends TbPageWidget {
-  SignUpPage(TbContext tbContext, {super.key}) : super(tbContext);
+  SignUpPage(super.tbContext, {super.key});
 
   @override
   State<StatefulWidget> createState() => _SignUpPageState();

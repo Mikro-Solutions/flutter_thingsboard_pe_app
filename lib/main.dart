@@ -8,15 +8,15 @@ import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:thingsboard_app/app_bloc_observer.dart';
-import 'package:thingsboard_app/config/routes/router.dart';
-import 'package:thingsboard_app/config/themes/tb_theme.dart';
-import 'package:thingsboard_app/config/themes/wl_theme_widget.dart';
-import 'package:thingsboard_app/core/auth/login/region.dart';
-import 'package:thingsboard_app/firebase_options.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/utils/services/firebase/i_firebase_service.dart';
-import 'package:thingsboard_app/utils/services/layouts/i_layout_service.dart';
+import 'package:systemat_app/app_bloc_observer.dart';
+import 'package:systemat_app/config/routes/router.dart';
+import 'package:systemat_app/config/themes/tb_theme.dart';
+import 'package:systemat_app/config/themes/wl_theme_widget.dart';
+import 'package:systemat_app/core/auth/login/region.dart';
+import 'package:systemat_app/firebase_options.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/utils/services/firebase/i_firebase_service.dart';
+import 'package:systemat_app/utils/services/layouts/i_layout_service.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -51,7 +51,7 @@ void main() async {
 }
 
 class ThingsboardApp extends StatelessWidget {
-  const ThingsboardApp({Key? key}) : super(key: key);
+  const ThingsboardApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:recaptcha_enterprise_flutter/recaptcha_client.dart';
-import 'package:thingsboard_app/thingsboard_client.dart'
+import 'package:systemat_app/thingsboard_client.dart'
     show OAuth2ClientInfo, MobileSelfRegistrationParams;
 
 sealed class AuthState extends Equatable {

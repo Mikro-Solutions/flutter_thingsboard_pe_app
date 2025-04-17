@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:thingsboard_app/constants/hive_type_adapter_ids.dart';
+import 'package:systemat_app/constants/hive_type_adapter_ids.dart';
 
 part 'region.g.dart';
 

@@ -1,11 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/modules/audit_log/audit_log_details_page.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/modules/audit_log/audit_log_details_page.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 const Map<ActionType, String> actionTypeTranslations = {
   ActionType.ADDED: 'Added',
@@ -65,16 +64,16 @@ mixin AuditLogsBase on EntitiesBase<AuditLog, TimePageLink> {
   String get noItemsFoundText => 'No audit logs found';
 
   @override
-  Future<PageData<AuditLog>> fetchEntities(TimePageLink pageLink) {
-    return tbClient.getAuditLogService().getAuditLogs(pageLink);
+  Future<PageData<AuditLog>> fetchEntities(TimePageLink pageKey) {
+    return tbClient.getAuditLogService().getAuditLogs(pageKey);
   }
 
   @override
-  void onEntityTap(AuditLog auditLog) {}
+  void onEntityTap(AuditLog entity) {}
 
   @override
-  Widget buildEntityListCard(BuildContext context, AuditLog auditLog) {
-    return _buildEntityListCard(context, auditLog);
+  Widget buildEntityListCard(BuildContext context, AuditLog entity) {
+    return _buildEntityListCard(context, entity);
   }
 
   Widget _buildEntityListCard(BuildContext context, AuditLog auditLog) {
@@ -85,8 +84,7 @@ mixin AuditLogsBase on EntitiesBase<AuditLog, TimePageLink> {
 class AuditLogCard extends TbContextWidget {
   final AuditLog auditLog;
 
-  AuditLogCard(TbContext tbContext, {super.key, required this.auditLog})
-      : super(tbContext);
+  AuditLogCard(super.tbContext, {super.key, required this.auditLog});
 
   @override
   State<StatefulWidget> createState() => _AuditLogCardState();

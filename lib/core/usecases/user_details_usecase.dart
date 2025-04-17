@@ -1,4 +1,4 @@
-import 'package:thingsboard_app/utils/usecase.dart';
+import 'package:systemat_app/utils/usecase.dart';
 
 class UserDetailsUseCase extends UseCase<UserDetailsOutput, UserDetailsParams> {
   const UserDetailsUseCase();

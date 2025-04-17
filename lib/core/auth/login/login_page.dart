@@ -9,23 +9,22 @@ import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:thingsboard_app/config/themes/tb_theme_utils.dart';
-import 'package:thingsboard_app/constants/assets_path.dart';
-import 'package:thingsboard_app/core/auth/login/bloc/auth_bloc.dart';
-import 'package:thingsboard_app/core/auth/login/bloc/auth_events.dart';
-import 'package:thingsboard_app/core/auth/login/bloc/auth_states.dart';
-import 'package:thingsboard_app/core/auth/login/choose_region_screen.dart';
-import 'package:thingsboard_app/core/auth/login/region.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
-import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
+import 'package:systemat_app/config/themes/tb_theme_utils.dart';
+import 'package:systemat_app/constants/assets_path.dart';
+import 'package:systemat_app/core/auth/login/bloc/auth_bloc.dart';
+import 'package:systemat_app/core/auth/login/bloc/auth_events.dart';
+import 'package:systemat_app/core/auth/login/bloc/auth_states.dart';
+import 'package:systemat_app/core/auth/login/choose_region_screen.dart';
+import 'package:systemat_app/core/auth/login/region.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/ui/tb_text_styles.dart';
+import 'package:systemat_app/widgets/tb_progress_indicator.dart';
 
 import 'login_page_background.dart';
 
 class LoginPage extends TbPageWidget {
-  LoginPage(TbContext tbContext, {super.key}) : super(tbContext);
+  LoginPage(super.tbContext, {super.key});
 
   @override
   State<StatefulWidget> createState() => _LoginPageState();
@@ -587,7 +586,7 @@ class _LoginPageState extends TbPageState<LoginPage>
                   ),
                 )
                 .values
-                .toList(),
+                ,
             const SizedBox(width: 8),
             Expanded(
               child: OutlinedButton(

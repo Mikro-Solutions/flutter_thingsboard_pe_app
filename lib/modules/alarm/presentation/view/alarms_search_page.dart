@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/config/routes/router.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/alarm/alarms_list.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/bloc.dart';
-import 'package:thingsboard_app/utils/ui/back_button_widget.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/config/routes/router.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/alarm/alarms_list.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/bloc.dart';
+import 'package:systemat_app/utils/ui/back_button_widget.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
 
 class AlarmsSearchPage extends StatelessWidget {
   const AlarmsSearchPage({

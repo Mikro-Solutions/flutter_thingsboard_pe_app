@@ -1,5 +1,5 @@
-import 'package:thingsboard_app/constants/app_constants.dart';
-import 'package:thingsboard_app/thingsboard_client.dart' show PlatformType;
+import 'package:systemat_app/constants/app_constants.dart';
+import 'package:systemat_app/thingsboard_client.dart' show PlatformType;
 
 abstract class AppSecretProvider {
   Future<String> getAppSecret(PlatformType platformType);

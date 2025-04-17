@@ -3,11 +3,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
 
 class QrCodeScannerPage extends TbPageWidget {
-  QrCodeScannerPage(TbContext tbContext, {super.key}) : super(tbContext);
+  QrCodeScannerPage(super.tbContext, {super.key});
 
   @override
   State<StatefulWidget> createState() => _QrCodeScannerPageState();

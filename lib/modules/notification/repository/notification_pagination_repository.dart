@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:thingsboard_app/modules/notification/controllers/notification_query_ctrl.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/modules/notification/controllers/notification_query_ctrl.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class NotificationPaginationRepository {
   NotificationPaginationRepository({
@@ -44,8 +44,8 @@ class NotificationPaginationRepository {
       final isLastPage = !pageData.hasNext;
       if (refresh) {
         var state = pagingController.value;
-        if (state.itemList != null) {
-          state.itemList!.clear();
+        if (state.items != null) {
+          state.items!.clear();
         }
       }
       if (isLastPage) {

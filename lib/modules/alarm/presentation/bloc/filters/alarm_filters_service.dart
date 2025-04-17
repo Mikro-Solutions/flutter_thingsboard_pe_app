@@ -1,13 +1,13 @@
-import 'package:thingsboard_app/core/logger/tb_logger.dart';
-import 'package:thingsboard_app/modules/alarm/domain/entities/alarm_filters_entity.dart';
-import 'package:thingsboard_app/modules/alarm/domain/entities/filter_data_entity.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/filters/filters/alarm_assignee_filter.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/filters/filters/alarm_severity_filter.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/filters/filters/alarm_status_filter.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/filters/filters/alarm_type_filter.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/filters/filters/i_alarm_filter.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/filters/i_alarm_filters_service.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/core/logger/tb_logger.dart';
+import 'package:systemat_app/modules/alarm/domain/entities/alarm_filters_entity.dart';
+import 'package:systemat_app/modules/alarm/domain/entities/filter_data_entity.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/filters/filters/alarm_assignee_filter.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/filters/filters/alarm_severity_filter.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/filters/filters/alarm_status_filter.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/filters/filters/alarm_type_filter.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/filters/filters/i_alarm_filter.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/filters/i_alarm_filters_service.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class AlarmFiltersService implements IAlarmFiltersService {
   AlarmFiltersService({required this.logger})

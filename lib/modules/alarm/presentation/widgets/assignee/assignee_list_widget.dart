@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/alarm/domain/entities/assignee_entity.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/assignee/bloc.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/assignee/user_info_avatar_widget.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/assignee/user_info_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/string_utils.dart';
-import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/alarm/domain/entities/assignee_entity.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/assignee/bloc.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/assignee/user_info_avatar_widget.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/assignee/user_info_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/string_utils.dart';
+import 'package:systemat_app/widgets/tb_progress_indicator.dart';
 
 class AssigneeListWidget extends StatelessWidget {
   const AssigneeListWidget({
@@ -105,112 +105,120 @@ class AssigneeListWidget extends StatelessWidget {
                 ),
               ),
               Flexible(
-                child: PagedListView<PageLink, AssigneeEntity>.separated(
-                  pagingController: getIt<AssigneeBloc>()
+                child: PagingListener(
+                  controller: getIt<AssigneeBloc>()
                       .paginationRepository
                       .pagingController,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  shrinkWrap: true,
-                  builderDelegate: PagedChildBuilderDelegate(
-                    itemBuilder: (context, item, index) {
-                      final state = getIt<AssigneeBloc>().state;
-                      Widget? userInfoWidget;
+                  builder: (context, state, fetchNextPage) =>
+                      PagedListView<PageLink, AssigneeEntity>.separated(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    shrinkWrap: true,
+                    builderDelegate: PagedChildBuilderDelegate(
+                      itemBuilder: (context, item, index) {
+                        final state = getIt<AssigneeBloc>().state;
+                        Widget? userInfoWidget;
 
-                      if (state is AssigneeSelectedState) {
-                        final selectedId = state.assignee.userInfo.id.id;
-                        if (selectedId == item.userInfo.id.id) {
-                          userInfoWidget = const SizedBox.shrink();
+                        if (state is AssigneeSelectedState) {
+                          final selectedId = state.assignee.userInfo.id.id;
+                          if (selectedId == item.userInfo.id.id) {
+                            userInfoWidget = const SizedBox.shrink();
+                          }
                         }
-                      }
 
-                      return Column(
-                        children: [
-                          Visibility(
-                            visible: index == 0 &&
-                                state is! AssigneeSelfAssignmentState,
-                            child: Column(
-                              children: [
-                                UserInfoWidget(
-                                  avatar: Icon(
-                                    Icons.account_circle,
-                                    color: Colors.black.withValues(alpha: 0.38),
-                                    size: 32,
+                        return Column(
+                          children: [
+                            Visibility(
+                              visible: index == 0 &&
+                                  state is! AssigneeSelfAssignmentState,
+                              child: Column(
+                                children: [
+                                  UserInfoWidget(
+                                    avatar: Icon(
+                                      Icons.account_circle,
+                                      color:
+                                          Colors.black.withValues(alpha: 0.38),
+                                      size: 32,
+                                    ),
+                                    name: 'Assigned to me',
+                                    onUserTap: (id) {
+                                      Navigator.of(context).pop();
+                                      getIt<AssigneeBloc>().add(
+                                        AssigneeSelectedEvent(
+                                          userId: id,
+                                          selfAssignment: true,
+                                        ),
+                                      );
+
+                                      onChanged();
+                                    },
+                                    id: tbContext.tbClient
+                                        .getAuthUser()!
+                                        .userId!,
                                   ),
-                                  name: 'Assigned to me',
+                                  const Divider(thickness: 1, height: 32),
+                                ],
+                              ),
+                            ),
+                            userInfoWidget ??
+                                UserInfoWidget(
+                                  avatar: UserInfoAvatarWidget(
+                                    shortName: item.shortName,
+                                    color: HSLColor.fromAHSL(
+                                      1,
+                                      item.displayName.hashCode % 360,
+                                      40 / 100,
+                                      60 / 100,
+                                    ).toColor(),
+                                  ),
+                                  name: item.displayName,
+                                  email: item.userInfo.email,
+                                  showEmail: !item.displayName.isValidEmail(),
                                   onUserTap: (id) {
                                     Navigator.of(context).pop();
                                     getIt<AssigneeBloc>().add(
-                                      AssigneeSelectedEvent(
-                                        userId: id,
-                                        selfAssignment: true,
-                                      ),
+                                      AssigneeSelectedEvent(userId: id),
                                     );
 
                                     onChanged();
                                   },
-                                  id: tbContext.tbClient.getAuthUser()!.userId!,
+                                  id: item.userInfo.id.id!,
                                 ),
-                                const Divider(thickness: 1, height: 32),
-                              ],
+                          ],
+                        );
+                      },
+                      firstPageProgressIndicatorBuilder: (_) {
+                        return Container(
+                          height: 200,
+                          color: const Color(0x99FFFFFF),
+                          child: Center(
+                            child: TbProgressIndicator(
+                              tbContext,
+                              size: 50.0,
                             ),
                           ),
-                          userInfoWidget ??
-                              UserInfoWidget(
-                                avatar: UserInfoAvatarWidget(
-                                  shortName: item.shortName,
-                                  color: HSLColor.fromAHSL(
-                                    1,
-                                    item.displayName.hashCode % 360,
-                                    40 / 100,
-                                    60 / 100,
-                                  ).toColor(),
-                                ),
-                                name: item.displayName,
-                                email: item.userInfo.email,
-                                showEmail: !item.displayName.isValidEmail(),
-                                onUserTap: (id) {
-                                  Navigator.of(context).pop();
-                                  getIt<AssigneeBloc>().add(
-                                    AssigneeSelectedEvent(userId: id),
-                                  );
+                        );
+                      },
+                    ),
+                    separatorBuilder: (_, index) {
+                      final state = getIt<AssigneeBloc>().state;
 
-                                  onChanged();
-                                },
-                                id: item.userInfo.id.id!,
-                              ),
-                        ],
-                      );
-                    },
-                    firstPageProgressIndicatorBuilder: (_) {
-                      return Container(
-                        height: 200,
-                        color: const Color(0x99FFFFFF),
-                        child: Center(
-                          child: TbProgressIndicator(
-                            tbContext,
-                            size: 50.0,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  separatorBuilder: (_, index) {
-                    final state = getIt<AssigneeBloc>().state;
-
-                    if (state is AssigneeSelectedState) {
-                      final selectedId = state.assignee.userInfo.id.id;
-                      final userId = getIt<AssigneeBloc>()
-                          .paginationRepository
-                          .pagingController
-                          .itemList?[index];
-                      if (selectedId == userId?.userInfo.id.id) {
-                        return const SizedBox.shrink();
+                      if (state is AssigneeSelectedState) {
+                        final selectedId = state.assignee.userInfo.id.id;
+                        final userId = getIt<AssigneeBloc>()
+                            .paginationRepository
+                            .pagingController
+                            .items?[index];
+                        if (selectedId == userId?.userInfo.id.id) {
+                          return const SizedBox.shrink();
+                        }
                       }
-                    }
 
-                    return const Divider(thickness: 1, height: 24);
-                  },
+                      return const Divider(thickness: 1, height: 24);
+                    },
+                    state: state,
+                    fetchNextPage: fetchNextPage,
+                  ),
                 ),
               ),
             ],

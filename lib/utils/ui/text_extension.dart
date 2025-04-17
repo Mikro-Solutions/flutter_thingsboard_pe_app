@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
+import 'package:systemat_app/utils/ui/tb_text_styles.dart';
 
 extension BoldSubString on Text {
   Text boldSubString(

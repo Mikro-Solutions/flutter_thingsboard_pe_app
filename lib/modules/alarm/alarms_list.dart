@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/entity/entity_list_card.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarms_bloc.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarms_events.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/alarms_card.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/ui/pagination_list_widget.dart';
-import 'package:thingsboard_app/utils/ui/pagination_widgets/first_page_exception_widget.dart';
-import 'package:thingsboard_app/utils/ui/pagination_widgets/first_page_progress_builder.dart';
-import 'package:thingsboard_app/utils/ui/pagination_widgets/new_page_progress_builder.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/core/entity/entity_list_card.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarms_bloc.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarms_events.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/alarms_card.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/ui/pagination_list_widget.dart';
+import 'package:systemat_app/utils/ui/pagination_widgets/first_page_exception_widget.dart';
+import 'package:systemat_app/utils/ui/pagination_widgets/first_page_progress_builder.dart';
+import 'package:systemat_app/utils/ui/pagination_widgets/new_page_progress_builder.dart';
 
 class AlarmsList extends StatelessWidget {
   const AlarmsList({required this.tbContext, super.key});

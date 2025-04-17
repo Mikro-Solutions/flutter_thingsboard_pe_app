@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/entity/entity_details_page.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/core/entity/entity_details_page.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class AssetDetailsPage extends EntityDetailsPage<Asset> {
-  AssetDetailsPage(TbContext tbContext, String assetId, {super.key})
+  AssetDetailsPage(super.tbContext, String assetId, {super.key})
       : super(
-          tbContext,
           entityId: assetId,
           defaultTitle: 'Asset',
           subTitle: 'Asset details',

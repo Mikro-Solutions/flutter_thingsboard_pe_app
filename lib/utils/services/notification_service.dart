@@ -3,13 +3,13 @@ import 'dart:convert';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/logger/tb_logger.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/notification/service/i_notifications_local_service.dart';
-import 'package:thingsboard_app/modules/notification/service/notifications_local_service.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/utils.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/core/logger/tb_logger.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/notification/service/i_notifications_local_service.dart';
+import 'package:systemat_app/modules/notification/service/notifications_local_service.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/utils.dart';
 
 class NotificationService {
   static NotificationService? _instance;

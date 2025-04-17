@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
 
 import 'assets_list.dart';
 
 class AssetsPage extends TbContextWidget {
   final bool searchMode;
 
-  AssetsPage(TbContext tbContext, {super.key, this.searchMode = false})
-      : super(tbContext);
+  AssetsPage(super.tbContext, {super.key, this.searchMode = false});
 
   @override
   State<StatefulWidget> createState() => _AssetsPageState();

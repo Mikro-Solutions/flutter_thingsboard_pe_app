@@ -1,6 +1,6 @@
-import 'package:thingsboard_app/modules/alarm/domain/repository/alarms/i_alarms_repository.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/usecase.dart';
+import 'package:systemat_app/modules/alarm/domain/repository/alarms/i_alarms_repository.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/usecase.dart';
 
 class FetchAlarmUseCase extends UseCase<Future<AlarmInfo?>, String> {
   const FetchAlarmUseCase({required this.repository});

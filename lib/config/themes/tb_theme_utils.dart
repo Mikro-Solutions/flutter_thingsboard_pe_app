@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/transition/page_transitions.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/transition/page_transitions.dart';
 
 abstract class TbThemeUtils {
   static final _tbTypography = Typography.material2018();

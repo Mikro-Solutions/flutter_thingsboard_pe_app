@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/modules/profile/change_password_page.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
-import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/modules/profile/change_password_page.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/widgets/tb_progress_indicator.dart';
 
 class ProfilePage extends TbPageWidget {
   final bool _fullscreen;
 
-  ProfilePage(TbContext tbContext, {super.key, bool fullscreen = false})
-      : _fullscreen = fullscreen,
-        super(tbContext);
+  ProfilePage(super.tbContext, {super.key, bool fullscreen = false})
+      : _fullscreen = fullscreen;
 
   @override
   State<StatefulWidget> createState() => _ProfilePageState();

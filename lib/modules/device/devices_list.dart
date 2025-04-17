@@ -1,20 +1,19 @@
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/entity/entities_base.dart';
-import 'package:thingsboard_app/core/entity/entities_list.dart';
-import 'package:thingsboard_app/modules/device/devices_base.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/core/entity/entities_base.dart';
+import 'package:systemat_app/core/entity/entities_list.dart';
+import 'package:systemat_app/modules/device/devices_base.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class DevicesList extends BaseEntitiesWidget<EntityData, EntityDataQuery>
     with DevicesBase, EntitiesListStateBase {
   final bool displayDeviceImage;
 
   DevicesList(
-    TbContext tbContext,
-    PageKeyController<EntityDataQuery> pageKeyController, {
+    super.tbContext,
+    super.pageKeyController, {
     super.key,
     searchMode = false,
     this.displayDeviceImage = false,
-  }) : super(tbContext, pageKeyController, searchMode: searchMode);
+  }) : super(searchMode: searchMode);
 
   @override
   bool displayCardImage(bool listWidgetCard) => displayDeviceImage;

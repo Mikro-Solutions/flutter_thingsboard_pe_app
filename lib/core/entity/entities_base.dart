@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:intl/intl.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/context/tb_context_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/ui/pagination_widgets/first_page_exception_widget.dart';
-import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
-import 'package:thingsboard_app/utils/utils.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/core/context/tb_context_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/ui/pagination_widgets/first_page_exception_widget.dart';
+import 'package:systemat_app/utils/ui/tb_text_styles.dart';
+import 'package:systemat_app/utils/utils.dart';
 
 const Map<EntityType, String> entityTypeTranslations = {
   EntityType.TENANT: 'Tenant',
@@ -97,8 +97,8 @@ mixin EntitiesBase<T, P> on HasTbContext {
 
 mixin ContactBasedBase<T extends ContactBased, P> on EntitiesBase<T, P> {
   @override
-  Widget buildEntityListCard(BuildContext context, T contact) {
-    var address = Utils.contactToShortAddress(contact);
+  Widget buildEntityListCard(BuildContext context, T entity) {
+    var address = Utils.contactToShortAddress(entity);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       child: Row(
@@ -115,7 +115,7 @@ mixin ContactBasedBase<T extends ContactBased, P> on EntitiesBase<T, P> {
                   children: [
                     Expanded(
                       child: Text(
-                        contact.getName(),
+                        entity.getName(),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TbTextStyles.labelLarge.copyWith(
@@ -127,7 +127,7 @@ mixin ContactBasedBase<T extends ContactBased, P> on EntitiesBase<T, P> {
                     Text(
                       entityDateFormat.format(
                         DateTime.fromMillisecondsSinceEpoch(
-                          contact.createdTime!,
+                          entity.createdTime!,
                         ),
                       ),
                       style: TbTextStyles.bodyMedium.copyWith(
@@ -137,9 +137,9 @@ mixin ContactBasedBase<T extends ContactBased, P> on EntitiesBase<T, P> {
                   ],
                 ),
                 const SizedBox(height: 4),
-                if (contact.email != null)
+                if (entity.email != null)
                   Text(
-                    contact.email!,
+                    entity.email!,
                     style: const TextStyle(
                       color: Color(0xFFAFAFAF),
                       fontSize: 12,
@@ -147,7 +147,7 @@ mixin ContactBasedBase<T extends ContactBased, P> on EntitiesBase<T, P> {
                       height: 16 / 12,
                     ),
                   ),
-                if (contact.email == null) const SizedBox(height: 16),
+                if (entity.email == null) const SizedBox(height: 16),
                 if (address != null) const SizedBox(height: 4),
                 if (address != null)
                   Text(
@@ -231,11 +231,11 @@ abstract class BaseEntitiesWidget<T, P> extends TbContextWidget
   final PageKeyController<P> pageKeyController;
 
   BaseEntitiesWidget(
-    TbContext tbContext,
+    super.tbContext,
     this.pageKeyController, {
     this.searchMode = false,
     super.key,
-  }) : super(tbContext);
+  });
 
   @override
   Widget? buildHeading(BuildContext context) => searchMode
@@ -253,6 +253,7 @@ abstract class BaseEntitiesWidget<T, P> extends TbContextWidget
 abstract class BaseEntitiesState<T, P>
     extends TbContextState<BaseEntitiesWidget<T, P>> {
   late final PagingController<P, T> pagingController;
+  final int _pageSize = 20;
   Completer<void>? _refreshCompleter;
   bool _dataLoading = false;
   bool _scheduleRefresh = false;
@@ -263,12 +264,13 @@ abstract class BaseEntitiesState<T, P>
   @override
   void initState() {
     super.initState();
-    pagingController =
-        PagingController(firstPageKey: widget.pageKeyController.value.pageKey);
-    widget.pageKeyController.addListener(_didChangePageKeyValue);
-    pagingController.addPageRequestListener((pageKey) {
-      _fetchPage(pageKey);
-    });
+    pagingController = PagingController(
+      getNextPageKey: _getNextPageKey,
+      fetchPage: (pageKey) async {
+        final pageData = await widget.fetchEntities(pageKey);
+        return pageData.data;
+      },
+    );
   }
 
   @override
@@ -311,6 +313,19 @@ abstract class BaseEntitiesState<T, P>
     }
   }
 
+  P? _getNextPageKey(PagingState<P, T> state) {
+    final keys = state.keys;
+    final pages = state.pages;
+    // Initial page key.
+    if (keys == null) return widget.pageKeyController.value.pageKey;
+
+    // Check for last page.
+    if (pages != null && pages.last.length < _pageSize) return null;
+
+    // Next page key.
+    return widget.pageKeyController.nextPageKey(keys.last);
+  }
+
   Future<void> _fetchPage(P pageKey, {bool refresh = false}) async {
     if (mounted) {
       _dataLoading = true;
@@ -320,8 +335,8 @@ abstract class BaseEntitiesState<T, P>
         final isLastPage = !pageData.hasNext;
         if (refresh) {
           var state = pagingController.value;
-          if (state.itemList != null) {
-            state.itemList!.clear();
+          if (state.items != null) {
+            state.items!.clear();
           }
         }
         if (isLastPage) {

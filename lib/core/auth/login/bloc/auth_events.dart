@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:thingsboard_app/thingsboard_client.dart' show PlatformType;
+import 'package:systemat_app/thingsboard_client.dart' show PlatformType;
 
 sealed class AuthEvent extends Equatable {
   const AuthEvent();

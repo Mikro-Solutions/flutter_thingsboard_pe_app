@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:thingsboard_app/modules/main/main_navigation_item.dart';
+import 'package:systemat_app/modules/main/main_navigation_item.dart';
 
 sealed class LayoutPagesState extends Equatable {
   const LayoutPagesState();

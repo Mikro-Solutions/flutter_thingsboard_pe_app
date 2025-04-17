@@ -1,18 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/core/logger/tb_logger.dart';
-import 'package:thingsboard_app/core/usecases/user_details_usecase.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/alarm/domain/pagination/activity/alarm_activity_pagination_repository.dart';
-import 'package:thingsboard_app/modules/alarm/domain/usecases/details/delete_alarm_comment_usecase.dart';
-import 'package:thingsboard_app/modules/alarm/domain/usecases/details/fetch_alarm_comments_usecase.dart';
-import 'package:thingsboard_app/modules/alarm/domain/usecases/details/post_alarm_comments_usecase.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/activity/bloc.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/services/communication/events.dart';
-import 'package:thingsboard_app/utils/services/communication/i_communication_service.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/core/logger/tb_logger.dart';
+import 'package:systemat_app/core/usecases/user_details_usecase.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/alarm/domain/pagination/activity/alarm_activity_pagination_repository.dart';
+import 'package:systemat_app/modules/alarm/domain/usecases/details/delete_alarm_comment_usecase.dart';
+import 'package:systemat_app/modules/alarm/domain/usecases/details/fetch_alarm_comments_usecase.dart';
+import 'package:systemat_app/modules/alarm/domain/usecases/details/post_alarm_comments_usecase.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/activity/bloc.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/services/communication/events.dart';
+import 'package:systemat_app/utils/services/communication/i_communication_service.dart';
 
 class AlarmActivityBloc extends Bloc<AlarmActivityEvent, AlarmActivityState> {
   AlarmActivityBloc({

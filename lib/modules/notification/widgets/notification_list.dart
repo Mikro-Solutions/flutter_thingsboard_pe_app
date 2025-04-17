@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/modules/notification/widgets/no_notifications_found_widget.dart';
-import 'package:thingsboard_app/modules/notification/widgets/notification_slidable_widget.dart';
-import 'package:thingsboard_app/modules/notification/widgets/notification_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/modules/notification/widgets/no_notifications_found_widget.dart';
+import 'package:systemat_app/modules/notification/widgets/notification_slidable_widget.dart';
+import 'package:systemat_app/modules/notification/widgets/notification_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/widgets/tb_progress_indicator.dart';
 
 class NotificationsList extends StatelessWidget {
   const NotificationsList({
@@ -26,39 +26,45 @@ class NotificationsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PagedListView<PushNotificationQuery, PushNotification>.separated(
-      pagingController: pagingController,
-      builderDelegate: PagedChildBuilderDelegate(
-        itemBuilder: (context, item, index) {
-          return NotificationSlidableWidget(
-            notification: item,
-            onReadNotification: onReadNotification,
-            onClearNotification: onClearNotification,
-            tbContext: tbContext,
-            thingsboardClient: thingsboardClient,
-            child: NotificationWidget(
+    return PagingListener(
+      controller: pagingController,
+      builder: (context, state, fetchNextPage) =>
+          PagedListView<PushNotificationQuery, PushNotification>.separated(
+        builderDelegate: PagedChildBuilderDelegate(
+          itemBuilder: (context, item, index) {
+            return NotificationSlidableWidget(
               notification: item,
-              thingsboardClient: thingsboardClient,
-              onClearNotification: onClearNotification,
               onReadNotification: onReadNotification,
+              onClearNotification: onClearNotification,
               tbContext: tbContext,
-            ),
-          );
-        },
-        firstPageProgressIndicatorBuilder: (_) => SizedBox.expand(
-          child: Container(
-            color: const Color(0x99FFFFFF),
-            child: Center(
-              child: TbProgressIndicator(
-                tbContext,
-                size: 50.0,
+              thingsboardClient: thingsboardClient,
+              child: NotificationWidget(
+                notification: item,
+                thingsboardClient: thingsboardClient,
+                onClearNotification: onClearNotification,
+                onReadNotification: onReadNotification,
+                tbContext: tbContext,
+              ),
+            );
+          },
+          firstPageProgressIndicatorBuilder: (_) => SizedBox.expand(
+            child: Container(
+              color: const Color(0x99FFFFFF),
+              child: Center(
+                child: TbProgressIndicator(
+                  tbContext,
+                  size: 50.0,
+                ),
               ),
             ),
           ),
+          noItemsFoundIndicatorBuilder: (_) =>
+              const NoNotificationsFoundWidget(),
         ),
-        noItemsFoundIndicatorBuilder: (_) => const NoNotificationsFoundWidget(),
+        separatorBuilder: (_, __) => const Divider(thickness: 1),
+        state: state,
+        fetchNextPage: fetchNextPage,
       ),
-      separatorBuilder: (_, __) => const Divider(thickness: 1),
     );
   }
 }

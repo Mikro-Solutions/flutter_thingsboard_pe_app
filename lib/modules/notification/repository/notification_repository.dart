@@ -1,8 +1,8 @@
-import 'package:thingsboard_app/modules/notification/controllers/notification_query_ctrl.dart';
-import 'package:thingsboard_app/modules/notification/repository/i_notification_query_repository.dart';
-import 'package:thingsboard_app/modules/notification/service/i_notifications_local_service.dart';
-import 'package:thingsboard_app/modules/notification/service/notifications_local_service.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
+import 'package:systemat_app/modules/notification/controllers/notification_query_ctrl.dart';
+import 'package:systemat_app/modules/notification/repository/i_notification_query_repository.dart';
+import 'package:systemat_app/modules/notification/service/i_notifications_local_service.dart';
+import 'package:systemat_app/modules/notification/service/notifications_local_service.dart';
+import 'package:systemat_app/thingsboard_client.dart';
 
 class NotificationRepository implements INotificationQueryRepository {
   NotificationRepository({

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:thingsboard_app/modules/dashboard/presentation/controller/dashboard_controller.dart';
-import 'package:thingsboard_app/widgets/two_page_view.dart';
+import 'package:systemat_app/modules/dashboard/presentation/controller/dashboard_controller.dart';
+import 'package:systemat_app/widgets/two_page_view.dart';
 
 class DashboardPageController {
   DashboardPageController({required this.pageCtrl});

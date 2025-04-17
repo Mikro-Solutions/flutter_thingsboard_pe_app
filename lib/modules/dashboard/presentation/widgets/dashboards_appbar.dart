@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/widgets/tb_app_bar.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/widgets/tb_app_bar.dart';
 
 class DashboardsAppbar extends StatelessWidget {
   const DashboardsAppbar({

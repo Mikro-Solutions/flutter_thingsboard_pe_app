@@ -1,4 +1,4 @@
-import 'package:thingsboard_app/core/auth/login/region.dart';
+import 'package:systemat_app/core/auth/login/region.dart';
 
 /// The aim of this service is to consolidate operations with
 /// the local database provider into one centralized location.

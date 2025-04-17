@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/messages.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:thingsboard_app/core/context/tb_context.dart';
-import 'package:thingsboard_app/locator.dart';
-import 'package:thingsboard_app/modules/alarm/domain/entities/assignee_entity.dart';
-import 'package:thingsboard_app/modules/alarm/domain/pagination/assignee/alarm_assignee_pagiation_repository.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarm_assignee/alarm_assignee_bloc.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarm_assignee/alarm_assignee_event.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/bloc/alarm_assignee/alarm_assignee_state.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/assignee/user_info_avatar_widget.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/assignee/user_info_widget.dart';
-import 'package:thingsboard_app/modules/alarm/presentation/widgets/tb_error_widget.dart';
-import 'package:thingsboard_app/thingsboard_client.dart';
-import 'package:thingsboard_app/utils/string_utils.dart';
-import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
-import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
+import 'package:systemat_app/core/context/tb_context.dart';
+import 'package:systemat_app/locator.dart';
+import 'package:systemat_app/modules/alarm/domain/entities/assignee_entity.dart';
+import 'package:systemat_app/modules/alarm/domain/pagination/assignee/alarm_assignee_pagiation_repository.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarm_assignee/alarm_assignee_bloc.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarm_assignee/alarm_assignee_event.dart';
+import 'package:systemat_app/modules/alarm/presentation/bloc/alarm_assignee/alarm_assignee_state.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/assignee/user_info_avatar_widget.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/assignee/user_info_widget.dart';
+import 'package:systemat_app/modules/alarm/presentation/widgets/tb_error_widget.dart';
+import 'package:systemat_app/thingsboard_client.dart';
+import 'package:systemat_app/utils/string_utils.dart';
+import 'package:systemat_app/utils/ui/tb_text_styles.dart';
+import 'package:systemat_app/widgets/tb_progress_indicator.dart';
 
 class AlarmAssigneeListWidget extends StatefulWidget {
   const AlarmAssigneeListWidget({
@@ -125,121 +125,126 @@ class _AssigneeListWidgetState extends State<AlarmAssigneeListWidget> {
               ),
             ),
             Expanded(
-              child: PagedListView<UsersAssignQuery, AssigneeEntity>.separated(
-                pagingController:
+              child: PagingListener(
+                controller:
                     getIt<AlarmAssigneePaginationRepository>().pagingController,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                shrinkWrap: true,
-                builderDelegate: PagedChildBuilderDelegate(
-                  itemBuilder: (context, item, index) {
-                    final state = context.read<AlarmAssigneeBloc>().state;
-                    Widget? userInfoWidget;
+                builder: (context, state, fetchNextPage) =>
+                    PagedListView<UsersAssignQuery, AssigneeEntity>.separated(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  shrinkWrap: true,
+                  builderDelegate: PagedChildBuilderDelegate(
+                    itemBuilder: (context, item, index) {
+                      final state = context.read<AlarmAssigneeBloc>().state;
+                      Widget? userInfoWidget;
 
-                    if (state is AlarmAssigneeSelectedState) {
-                      final selectedId = state.assignee.userInfo.id.id;
-                      if (selectedId == item.userInfo.id.id) {
-                        userInfoWidget = const SizedBox.shrink();
+                      if (state is AlarmAssigneeSelectedState) {
+                        final selectedId = state.assignee.userInfo.id.id;
+                        if (selectedId == item.userInfo.id.id) {
+                          userInfoWidget = const SizedBox.shrink();
+                        }
                       }
-                    }
 
-                    return Column(
-                      children: [
-                        Visibility(
-                          visible:
-                              index == 0 && state is AlarmAssigneeSelectedState,
-                          child: Column(
-                            children: [
-                              UserInfoWidget(
-                                avatar: Icon(
-                                  Icons.account_circle,
-                                  color: Colors.black.withValues(alpha: 0.38),
-                                  size: 32,
+                      return Column(
+                        children: [
+                          Visibility(
+                            visible: index == 0 &&
+                                state is AlarmAssigneeSelectedState,
+                            child: Column(
+                              children: [
+                                UserInfoWidget(
+                                  avatar: Icon(
+                                    Icons.account_circle,
+                                    color: Colors.black.withValues(alpha: 0.38),
+                                    size: 32,
+                                  ),
+                                  name: S.of(context).unassigned,
+                                  onUserTap: (id) {
+                                    Navigator.of(context).pop();
+                                    context.read<AlarmAssigneeBloc>().add(
+                                          const AlarmAssigneeUnassignedEvent(),
+                                        );
+                                  },
+                                  id: widget.tbContext.tbClient
+                                      .getAuthUser()!
+                                      .userId!,
                                 ),
-                                name: S.of(context).unassigned,
+                                const SizedBox(height: 16),
+                              ],
+                            ),
+                          ),
+                          userInfoWidget ??
+                              UserInfoWidget(
+                                avatar: UserInfoAvatarWidget(
+                                  shortName: item.shortName,
+                                  color: HSLColor.fromAHSL(
+                                    1,
+                                    item.displayName.hashCode % 360,
+                                    40 / 100,
+                                    60 / 100,
+                                  ).toColor(),
+                                ),
+                                name: item.displayName,
+                                email: item.userInfo.email,
+                                showEmail: !item.displayName.isValidEmail(),
+                                searchText: textEditingController.text,
                                 onUserTap: (id) {
                                   Navigator.of(context).pop();
                                   context.read<AlarmAssigneeBloc>().add(
-                                        const AlarmAssigneeUnassignedEvent(),
+                                        AlarmAssigneeSelectedEvent(id),
                                       );
                                 },
-                                id: widget.tbContext.tbClient
-                                    .getAuthUser()!
-                                    .userId!,
+                                id: item.userInfo.id.id!,
                               ),
-                              const SizedBox(height: 16),
-                            ],
+                        ],
+                      );
+                    },
+                    firstPageProgressIndicatorBuilder: (_) {
+                      return Container(
+                        height: 200,
+                        color: const Color(0x99FFFFFF),
+                        child: Center(
+                          child: TbProgressIndicator(
+                            widget.tbContext,
+                            size: 50.0,
                           ),
                         ),
-                        userInfoWidget ??
-                            UserInfoWidget(
-                              avatar: UserInfoAvatarWidget(
-                                shortName: item.shortName,
-                                color: HSLColor.fromAHSL(
-                                  1,
-                                  item.displayName.hashCode % 360,
-                                  40 / 100,
-                                  60 / 100,
-                                ).toColor(),
-                              ),
-                              name: item.displayName,
-                              email: item.userInfo.email,
-                              showEmail: !item.displayName.isValidEmail(),
-                              searchText: textEditingController.text,
-                              onUserTap: (id) {
-                                Navigator.of(context).pop();
-                                context.read<AlarmAssigneeBloc>().add(
-                                      AlarmAssigneeSelectedEvent(id),
-                                    );
-                              },
-                              id: item.userInfo.id.id!,
+                      );
+                    },
+                    noItemsFoundIndicatorBuilder: (_) {
+                      return Column(
+                        children: [
+                          const SizedBox(height: 72),
+                          Text(
+                            S.of(context).noResultsFound,
+                            style: TbTextStyles.titleXs.copyWith(
+                              color: Colors.black.withValues(alpha: .87),
                             ),
-                      ],
-                    );
-                  },
-                  firstPageProgressIndicatorBuilder: (_) {
-                    return Container(
-                      height: 200,
-                      color: const Color(0x99FFFFFF),
-                      child: Center(
-                        child: TbProgressIndicator(
-                          widget.tbContext,
-                          size: 50.0,
-                        ),
-                      ),
-                    );
-                  },
-                  noItemsFoundIndicatorBuilder: (_) {
-                    return Column(
-                      children: [
-                        const SizedBox(height: 72),
-                        Text(
-                          S.of(context).noResultsFound,
-                          style: TbTextStyles.titleXs.copyWith(
-                            color: Colors.black.withValues(alpha: .87),
                           ),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          S.of(context).tryRefiningYourQuery,
-                          style: TbTextStyles.bodyLarge.copyWith(
-                            color: Colors.black.withValues(alpha: .54),
+                          const SizedBox(height: 5),
+                          Text(
+                            S.of(context).tryRefiningYourQuery,
+                            style: TbTextStyles.bodyLarge.copyWith(
+                              color: Colors.black.withValues(alpha: .54),
+                            ),
                           ),
-                        ),
-                      ],
-                    );
+                        ],
+                      );
+                    },
+                    firstPageErrorIndicatorBuilder: (_) {
+                      return TbErrorWidget(
+                        onRefresh: () => context
+                            .read<AlarmAssigneeBloc>()
+                            .add(const AlarmAssigneeRefreshEvent()),
+                      );
+                    },
+                  ),
+                  separatorBuilder: (_, __) {
+                    return const SizedBox(height: 16);
                   },
-                  firstPageErrorIndicatorBuilder: (_) {
-                    return TbErrorWidget(
-                      onRefresh: () => context
-                          .read<AlarmAssigneeBloc>()
-                          .add(const AlarmAssigneeRefreshEvent()),
-                    );
-                  },
+                  state: state,
+                  fetchNextPage: fetchNextPage,
                 ),
-                separatorBuilder: (_, __) {
-                  return const SizedBox(height: 16);
-                },
               ),
             ),
           ],
